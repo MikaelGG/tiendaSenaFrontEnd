@@ -2,6 +2,8 @@
 import Registrar from "@/app/componentes/botones/registrar"
 import { useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
+import Swal from "sweetalert2";
 
 export default function RegistroInsumos(){
     const [nombre, setNombre] = useState("");
@@ -10,9 +12,9 @@ export default function RegistroInsumos(){
     const [f_ingreso, setF_ingreso] = useState(Date);
     const [f_vencimiento, setF_vencimiento] = useState(Date);
     const [costo, setCosto] = useState(0);
-
+    const router = useRouter();
     const add = ()=>{
-        axios.post("http://localhost:3001/createInsumos",{    
+        axios.post("http://localhost:4000/api/rawMaterial",{    
             nombre:nombre,
             cantidad:cantidad,
             imagen:imagen,
@@ -20,7 +22,9 @@ export default function RegistroInsumos(){
             f_vencimiento:f_vencimiento,
             costo:costo
         }).then(()=>{
-            alert("Insumo registrado");
+            Swal.fire("Insumo registrado", "", "success").then(() => {
+                router.push("/admin/inventarioInsumos");
+            })
         });
     }
  return(<>
@@ -34,7 +38,7 @@ export default function RegistroInsumos(){
             <label className="texto_menu col-4">Cantidad</label>
             <input onChange={(event) => { setCantidad(parseInt(event.target.value)); }}type="number" className="col-7 m-2 input_form" ></input>
             <label className="texto_menu col-4">imagen</label>
-            <input onChange={(event) => { setImagen(event.target.value); }}type="file" className="col-7 m-2 input_form" ></input>
+            <input onChange={(event) => { setImagen(event.target.value); }}type="text" className="col-7 m-2 input_form" ></input>
             <label className="texto_menu col-4">Fecha Ingreso</label>
             <input onChange={(event) => { setF_ingreso(event.target.value); }}type="date" className="col-7 m-2 input_form" ></input>
             <label className="texto_menu col-4">Fecha Vencimiento</label>

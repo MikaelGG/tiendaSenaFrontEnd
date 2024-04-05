@@ -4,24 +4,47 @@ import style from "@/app/admin/admin.module.css"
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Swal from "sweetalert2";
 
 export default function Utensilios() {
-  const [utensiliosList, setUtensilios] = useState([])
+  interface Utensilio {
+    codigo: number;
+    nombre: string;
+    cantidad: number;
+    imagen: string
+  }
+  const [utensiliosList, setUtensilios] = useState<Utensilio[]>([]);
+
   useEffect(() => {
-    axios.get("http://localhost:3001/utensilios",).then((response) => {
+    axios.get("http://localhost:4000/api/utensil",).then((response) => {
       setUtensilios(response.data);
     });
   }, [])
   console.log(utensiliosList)
-  const eliminar = (codigo) => {
-    axios.delete(`http://localhost:3001/deleteUtensilios/${codigo}`, {
-    }).then(() => {
-      alert("Utensilio eliminado");
-    }).then(() => {
-      location.reload()
-    })
 
-  }
+
+
+  const eliminar = (codigo: any) => {
+    // Mostrar un diálogo de confirmación usando SweetAlert 2
+    Swal.fire({
+        title: "¿Estás seguro de que quieres eliminar este utensilio?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Eliminar",
+        cancelButtonText: "Cancelar"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Si el usuario confirma, realiza la llamada a la API para eliminar el elemento
+            axios.delete(`http://localhost:4000/api/utensil/${codigo}`).then(() => {
+                // Mostrar un mensaje de éxito usando SweetAlert 2
+                Swal.fire("Utensilio eliminado", "", "success").then(() => {
+                  location.reload();
+                });
+            });
+        }
+    });
+  };
+
   return (<>
     <div className="row my-4">
       <div className="text_nav text-center"><a className="tittle">Inventario de utensilios</a></div>
@@ -38,8 +61,8 @@ export default function Utensilios() {
       {utensiliosList.map((val, key) => {
         return <>
           <div className="row my-2">
-            <div className="col-sm-6 col-md-4 col-lg-2">{val.imagen}
-              <img className={`${style.img_invent} w-100`} src="/cuchara.png" alt="" />
+            <div className="col-sm-6 col-md-4 col-lg-2">
+              <img className={`${style.img_invent} w-100`} src={val.imagen} alt="" />
             </div>
             <div className="col-sm-12 col-md-8 col-lg-6">
               <span className={`${style.tittle_small}`}>Codigo: </span>

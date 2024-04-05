@@ -90,3 +90,7 @@
     background-color: #CC3366;
     opacity: 70%;
 }
+.evento_imagen {
+    width: 370px; /* Ancho predeterminado */
+    height: 250px; /* Alto predeterminado */
+}

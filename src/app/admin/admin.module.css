@@ -2,7 +2,7 @@
 .text_nav_home{
     font-family:'Great Vibes', cursive;
     color: #CC3366;
-    font-size: 40px;
+    font-size: 60px;
     text-decoration:none;
   }
 .list{
@@ -19,7 +19,7 @@
 }
 .img_inicio{
     justify-content: right;
-  display: flex;
+    display: flex;
 }
 .subtit{
     color: #663300;
@@ -44,8 +44,10 @@
     font-size: 14px;
 }
 .img_invent{
-    border: #000 1px solid ;
-    border-radius: 5px;
+    border: #000 1px solid;
+    border-radius: 25px;
+    width: 250px;
+    height: 200px;
 }
 .edit{
     color: white;

@@ -2,6 +2,8 @@
 import Registrar from "@/app/componentes/botones/registrar"
 import { useState } from "react";
 import axios from "axios";
+import {useRouter} from "next/navigation";
+import Swal from "sweetalert2";
 
 export default function RegistroProveedor(){
     const [nit, setNit] = useState(0);
@@ -9,16 +11,18 @@ export default function RegistroProveedor(){
     const [apellido, setApellido] = useState("");
     const [direccion, setDireccion] = useState("");
     const [telefono, setTelefono] = useState(0);
-    
+    const router = useRouter();
     const add = ()=>{
-        axios.post("http://localhost:3001/createProveedores",{
+        axios.post("http://localhost:4000/api/supplier",{
             nit:nit,    
             nombre:nombre,
             apellido:apellido,
             direccion:direccion,
             telefono:telefono
         }).then(()=>{
-            alert("Proveedor registrado");
+            Swal.fire("Proveedor registrado", "", "success").then(() => {
+                router.push("/admin/proveedores");
+            })
         });
     }
     

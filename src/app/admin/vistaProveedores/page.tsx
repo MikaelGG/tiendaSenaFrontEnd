@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 export default function Provedores(){
     const [proveedoresList,setProveedores] = useState([])
   useEffect(() =>{
-    axios.get("http://localhost:3001/proveedores",).then((response)=>{
+    axios.get("http://localhost:4000/api/supplier",).then((response)=>{
         setProveedores(response.data);
     });
   }, [])

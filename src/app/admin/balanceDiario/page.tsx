@@ -5,16 +5,28 @@ import axios from "axios";
 import { isTemplateExpression } from "typescript";
 export default function BalanceDiario() {
   const [diarioList, setDiario] = useState([]);
-  const [ingresosList, setIngresos] = useState(null);
-  const [egresosList, setEgresos] = useState(null);
+  const [ingresosList, setIngresos] = useState(0);
+  const [egresosList, setEgresos] = useState(0);
+
   useEffect(() => {
-    axios.get("http://localhost:3001/diario").then((response) => {
+    axios.get("http://localhost:4000/api/dailyBalance").then((response) => {
       setDiario(response.data);
-      setIngresos(response.data[0].sumTotalIngresos);
-      setEgresos(response.data[0].sumTotalEgresos)
       console.log(response.data);
     });
+
+    axios.get("http://localhost:4000/api/dailyBalance/in").then((response) => {
+      const ingresos  = response.data.Ingresos;
+      setIngresos(ingresos);
+      console.log(ingresos);
+    });
+
+    axios.get("http://localhost:4000/api/dailyBalance/eg").then((response) => {
+      const egresos  = response.data.Egresos;
+      setEgresos(egresos);
+      console.log(egresos);
+    });   
   }, []);
+
   return (
     <>
       <div className="row my-4">
@@ -24,20 +36,16 @@ export default function BalanceDiario() {
       </div>
       <div className="col-8 text-center my-3 container">
         <div className="texto_menu mx-2 my-1 row table">
-          <div className="col-2">Nro Factura</div>
-          <div className="col-2">Consumidor</div>
-          <div className="col-3">Producto</div>
-          <div className="col-2">Cantidad</div>
-          <div className="col-3">Total</div>
+          <div className="col-4">Nro Factura</div>
+          <div className="col-4">Consumidor</div>
+          <div className="col-4">Total</div>
         </div>
         {diarioList.map((val, key) => {
           return <>
             <div className="row mx-2 my-1 texto_drop">
-              <div className="col-2">{val.nro}</div>
-              <div className="col-2">{val.consumidor}</div>
-              <div className="col-3">{val.producto}</div>
-              <div className="col-2">{val.cantidad}</div>
-              <div className="col-3">{val.total}</div>
+              <div className="col-4">{val.nroFactura}</div>
+              <div className="col-4">{val.nombreConsumidor}</div>
+              <div className="col-4">{val.total}</div>
             </div>
           </>
         })}

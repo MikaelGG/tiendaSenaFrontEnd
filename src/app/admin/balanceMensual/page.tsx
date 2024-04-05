@@ -7,7 +7,7 @@ export default function BalanceMensual(){
     const [ingresosList, setIngresos] = useState(null);
     const [egresosList, setEgresos] = useState(null);
     useEffect(() => {
-      axios.get("http://localhost:3001/mensual").then((response) => {
+      axios.get("http://localhost:4000/api/monthlyBalance").then((response) => {
         setMensual(response.data);
         setIngresos(response.data[0].sumTotalIngresos);
         setEgresos(response.data[0].sumTotalEgresos)
@@ -29,9 +29,9 @@ export default function BalanceMensual(){
         {MensualList.map((val, key) => {
           return <>
         <div className="row mx-2 my-1 texto_drop">
-        <div className="col-2">{val.nro}</div>
+        <div className="col-2">{val.nroFactura}</div>
             <div className="col-2">{val.fecha}</div>
-            <div className="col-3">{val.producto}</div>
+            <div className="col-3">{val.nombreProducto}</div>
             <div className="col-2">{val.cantidad}</div>
             <div className="col-3">{val.total}</div>
         </div>
