@@ -1,8 +1,11 @@
 'use client'
-import { useState } from "react";
-import styles from "../usuario.module.css"
+import { useState, useEffect } from "react";
+import styles from "../usuario.module.css";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import jwt from 'jsonwebtoken';
+import Swal from "sweetalert2";
+
 const backgroundStyles: React.CSSProperties = {
     backgroundImage: `url('/IMAGE.png/')`,
     backgroundSize: 'cover',
@@ -11,19 +14,40 @@ const backgroundStyles: React.CSSProperties = {
 };
 export default function PageInicio() {
     const [user, setUser] = useState("")
-    const [password, setPassword] = useState(0)
+    const [password, setPassword] = useState("")
     const router = useRouter()
-    const handleSubmit = () => {
-        axios.post("http://localhost:4000/api/signIn", {
-            correo: user,
-            cedula: password
-        }).then(() => {
-            router.push("/admin")
-        }).catch(err =>{
+    const handleSubmit = async () => {
+        try {
+            const response = await axios.post("http://localhost:4000/api/signIn", {
+                correo: user,
+                cedula: password
+            });
+            const token = response.data.token;
+            localStorage.setItem('item', token);
+            router.push("/admin/vistaBienvenido");
+        } catch (err: any) {
             console.log(err.response.data.error);
             alert(err.response.data.error)
-        })
+        }
     }
+    useEffect(() => {
+        const token = localStorage.getItem('item');
+        if (!token) {
+            // Si no hay token en el almacenamiento local, redirigir al usuario a la página de inicio de sesión
+            router.push("/usuario/sesion");
+            return;
+        }
+
+        // Verificar si el token está expirado
+        const decodedToken: any = jwt.decode(token);
+        if (decodedToken && decodedToken.exp && decodedToken.exp * 1000 < Date.now()) {
+            // Si el token ha expirado, redirigir al usuario a la página de inicio de sesión
+            console.log("Token expirado");
+            Swal.fire("Su sesion ha expirado, inicie sesion", "", "success");
+            localStorage.removeItem('token'); // Eliminar el token expirado del almacenamiento local
+        }
+    }, []);
+
     return (
         <>
             <div className="container-fluid" style={backgroundStyles}>

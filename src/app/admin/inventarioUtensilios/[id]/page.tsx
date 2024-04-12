@@ -24,7 +24,7 @@ export default function editUtensilios(){
 
     const handleChange = (event: any) => {
         const { name, value } = event.target;
-        setProducto((prevProduct) => ({
+        setProducto((prevProduct: any) => ({
             ...prevProduct,
             [name]: value,
         }));

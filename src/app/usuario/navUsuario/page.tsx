@@ -12,9 +12,11 @@ export default function NavUsuario({name}:{name:string}){
         <>
         
         <div className={`${styles.nav_usuario} row`}>
-                <div className="col-1 p-1"><img src="/Layer1000.svg" alt="logo"></img></div>
-                <div className=" text_nav_admin d-none d-sm-block col-4">La Tienda del Café</div>
-                <div className={`${styles.nav} col-7 text-center my-3`}>
+                <div className="col-4 py-2 ps-5">
+                    <a href="/usuario/inicio"><img src="/iconoSVG.svg" ></img></a>
+                    <a href="/usuario/inicio"><img src="/tiendadelcafeCoursive.svg" ></img></a>
+                </div>
+                <div className={`${styles.nav} ${styles.text_nav} col-7 text-center my-2`}>
                 {
                     navU.map((nav) =>
                     <NavUsuarioItems key={crypto.randomUUID()} name={nav.name} url={nav.url} isActive={nav.name == name}/>

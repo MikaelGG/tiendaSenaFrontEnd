@@ -15,6 +15,22 @@ export default function RegistroCarta(){
     console.log(imagen);
     
     const add = ()=>{
+        if (nombre.trim() === '' || nombre.length < 3) {
+            Swal.fire("Completa correctamente el nombre.", "", "error")
+            return;           
+        }else if (!imagen) {
+            Swal.fire("Completa correctamente la url", "", "error")
+            return;
+        } else if (descripcion.length < 20) {
+            Swal.fire("Completa correctamente la descripción. Minimo 20 carácteres", "", "error")
+            return;
+        } else if (!precio){
+            Swal.fire("Completa correctamente el precio", "", "error")
+            return;
+        } else if (!cantidad){
+            Swal.fire("Completa correctamente la cantidad", "", "error")
+            return;
+        } 
         axios.post("http://localhost:4000/api/products",{
             imagen:imagen,    
             nombre:nombre,
@@ -23,7 +39,7 @@ export default function RegistroCarta(){
             cantidad:cantidad,
         }).then(()=>{
             Swal.fire("Producto registrado", "", "success").then(() => {
-                router.push("/admin/carta");
+                router.push("/admin/vistaProductos");
             })
         });
     }

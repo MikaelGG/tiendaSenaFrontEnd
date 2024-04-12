@@ -41,7 +41,7 @@ export default function Carta() {
             <div className="text_nav text-center"><a className="tittle">Carta</a></div>
         </div>
         <div className="row justify-content-center">
-            <button className={`${styles.ingresar} col-2 text-center align-items-center p-1 `} type="submit"><a href="/admin/registroCarta" className={`${styles.text_form}`}>Adicionar</a></button>
+            <button className={`${styles.ingresar} col-2 text-center align-items-center p-1 `} type="submit"><a href="/admin/registroProducto" className={`${styles.text_form}`}>Adicionar</a></button>
         </div>
         <div className="row pt-2 mx-3 justify-content-center">
             {productosList.map((val, key) => {
@@ -62,7 +62,7 @@ export default function Carta() {
                             </Link>
                             <button className={`${styles.ingresar} col-5 text-center align-items-center p-1 `} onClick={() => {
                                 eliminar(val.codigo);
-                            }} type="submit"><a className={`${styles.text_form}`}>Dar de baja</a></button>
+                            }} type="submit"><a className={`${styles.text_form}`}>Dar de baja</a></button>ñajslñda
                         </div>
                     </div>
                 </>

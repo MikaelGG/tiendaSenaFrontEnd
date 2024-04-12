@@ -29,7 +29,7 @@ const Eventos = () => {
 
   return (
     <>
-      <div className="container-fluid " style={backgroundStylesU}>
+      <div className="container-fluid" style={backgroundStylesU}>
         <div className="row">
           <div className="col-12 text-center mt-5 mb-3 ">
             <span className={`${styles.text_p_form} col-10 text-center ms-4`}>
@@ -37,6 +37,7 @@ const Eventos = () => {
             </span>
           </div>
         </div>
+      <div className="row justify-content-center">
         {eventosList.map((val, key) => {
 
           return (
@@ -48,16 +49,16 @@ const Eventos = () => {
                   alt=""
                 ></img>
               </div>
-              <div className="col-8">
+              <div className="col-6">
                 <span className={`${styles.text_carta} col-8`}>
-                  {val.hora_inicio}-{val.hora_fin}
+                  {val.hora_inicio} - {val.hora_fin}
                 </span>
                 <br></br>
                 <span className={`${styles.text_form} col-10`}>
                   {val.descripcion}
                 </span>
                 <div className="col-3 my-1">
-                  <span className={`${styles.text_eventos} col-10`}>
+                  <span className={`${styles.text_eventos} col-10 fs-6`}>
                     {formatDate(val.fecha)}
                     <br></br>
                     Cupos: {val.cupo}
@@ -68,6 +69,7 @@ const Eventos = () => {
           );
         })}
       </div>
+    </div>
     </>
   );
 };

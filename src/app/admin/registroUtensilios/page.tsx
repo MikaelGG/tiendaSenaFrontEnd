@@ -13,6 +13,18 @@ export default function RegistroUtensilios(){
     const route = useRouter();
 
     const add = ()=>{
+
+        if (nombre.trim() === '' || nombre.length < 3) {
+            Swal.fire("Completa correctamente el nombre.", "", "error")
+            return;           
+        }else if (!cantidad) {
+            Swal.fire("Completa correctamente la cantidad", "", "error")
+            return;
+        } else if (imagen.trim() === '') {
+            Swal.fire("Completa correctamente la url", "", "error")
+            return;
+        }
+
         axios.post("http://localhost:4000/api/utensil",{    
             nombre:nombre,
             cantidad:cantidad,
@@ -23,6 +35,7 @@ export default function RegistroUtensilios(){
             })
         });
     }
+
     return(<>
         <div className="row my-4">
             <div className="text_nav text-center"><a className="tittle">Registrar Utensilios</a></div>
@@ -36,7 +49,7 @@ export default function RegistroUtensilios(){
                 <label className="texto_menu col-4">imagen</label>
                 <input onChange={(event) => { setImagen(event.target.value); }}type="text" className="col-7 m-2 input_form" ></input>
                 <div className="row text-center my-3">
-                <div className="" ><Registrar/></div><br></br>
+                <div className="" onClick={add}><Registrar/></div><br></br>
             </div>
             </div>
         </div>

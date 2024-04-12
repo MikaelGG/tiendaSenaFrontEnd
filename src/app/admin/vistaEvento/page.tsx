@@ -16,7 +16,7 @@ const backgroundStylesU: React.CSSProperties = {
 export default function Eventos(){
     const [eventosList,setEventos] = useState([]);
   useEffect(() =>{
-    axios.get("http://localhost:4000/api/event",).then((response)=>{
+    axios.get(`http://localhost:4000/api/event`,).then((response)=>{
         setEventos(response.data);
     });
   }, [])
@@ -41,8 +41,7 @@ export default function Eventos(){
                 });
             }
         });
-      };
-
+    };
 
     function formatDate(dateString: any) {
         const date = new Date(dateString);
@@ -50,11 +49,9 @@ export default function Eventos(){
         const month = (date.getMonth() + 1).toString().padStart(2, '0');
         const day = date.getDate().toString().padStart(2, '0');
         return `${year}-${month}-${day}`;
-      }
+    }
 
-
-    return(
-        <>
+    return(<>
         <div className=" container-fluid " style={backgroundStylesU}>
             <div className="row">
                 <div className="col-12 text-center mt-5 mb-3 ">
@@ -69,26 +66,28 @@ export default function Eventos(){
                 </div>
             </div>
             <br />
-            {eventosList.map((val,key)=>{
-            return <>
-            <div className={`${styles.form_carta} row m-3 p-5`}>
-                <div className="col-4 container-fluid g-0 ">
-                    <img className={`${style.img_invent} w-100`} src={val.imagen} alt="" />
-                </div>
-                <div className="col-8">
-                    <span className={`${styles.text_carta} col-8`}>Hora: {val.hora_inicio}-{val.hora_fin}</span><br></br>
-                    <span className={`${styles.text_form} col-10`}> {val.descripcion}</span>
-                        <div className="col-3 my-1">
-                            <span className={`${styles.text_eventos} col-10`}> {formatDate(val.fecha)}<br></br>Cupos: {val.cupo}</span>  
+            <div className="row justify-content-center">
+                {eventosList.map((val,key)=>{
+                    return <>
+                        <div className={`${styles.form_carta} row  m-3 p-5`}>
+                            <div className="col-4 container-fluid g-0 ">
+                                <img className={`${style.img_invent} w-100`} src={val.imagen} alt="" />
+                            </div>
+                            <div className="col-6">
+                                <span className={`${styles.text_carta} col-8`}>Hora: {val.hora_inicio} - {val.hora_fin}</span><br></br>
+                                <span className={`${styles.text_form} col-10`}> {val.descripcion}</span>
+                                    <div className="col-3 my-1">
+                                        <span className={`${styles.text_eventos} col-10 fs-6`}> {formatDate(val.fecha)}<br></br>Cupos: {val.cupo}</span> 
+                                    </div>
+                                    <br />
+                                    <button className={`${styles.ingresar} col-5 text-center align-items-center p-1 `} onClick={()=>{
+                                    eliminar(val.codigo);
+                                    }} type="submit"><a className={`${styles.text_form}`}>Eliminar</a></button>
+                            </div>
                         </div>
-                        <button className={`${styles.ingresar} col-5 text-center align-items-center p-1 `} onClick={()=>{
-                        eliminar(val.codigo);
-                        }} type="submit"><a className={`${styles.text_form}`}>Eliminar</a></button>
-                </div>
-            </div>
-            </>})
-        }    
+                    </>})
+                }
+            </div>    
         </div>
-        </>
-    )
+    </>)
 }

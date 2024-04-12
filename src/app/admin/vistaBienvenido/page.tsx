@@ -57,34 +57,36 @@ export default function InicioA() {
       </div>
       <div className="container  justify-content-center">
         <div className="row">
-          <div className={`${styles.list} col-3 ms-4`}></div>
+          <div className={`${styles.list} col-4 ms-4`}></div>
           <div className={`${styles.list} col-4 ms-3`}></div>
-          <div className={`${styles.list} col-4 ms-3`}></div>
+          <div className={`${styles.list} col-3 ms-3`}></div>
         </div>
         <div className="row">
-          <div className={`${styles.list_data} col-3 ms-4`}>
-            <div className="row mt-2 mx-3 fs-5">
-              Usuarios registrados: <b className="text-center fs-2">{countUsers}</b>{" "}
+          <div className={`${styles.list_data} col-4 ms-4`}>
+            <div className="row mt-2 fs-3 mx-5 col-9">
+              <h3><b>Usuarios registrados:</b></h3> 
             </div>
             <div className={`${styles.img_inicio} row `}>
+              <b className={`${styles.usuarios_registrados} fs-1 col-5`}>{countUsers}</b>
               <img className="col-4" src="/User_Circle.svg" alt=""></img>
             </div>
           </div>
           <div className={`${styles.list_data} col-4 ms-3`}>
-            <div className="row mt-2 mx-3 fs-5">
-              Facturas registradas:{" "}
-              <b className="text-center fs-2">{countFactura}</b>
+            <div className="row mt-2 fs-3 mx-5 col-8">
+            <h3><b>Facturas registradas:</b></h3> 
             </div>
             <div className={`${styles.img_inicio} row `}>
-              <img className="col-3" src="/factura.svg" alt=""></img>
+              <b className={`${styles.facturas_registradas} fs-1 col-5`}>{countFactura}</b>
+              <img className="col-4" src="/factura.svg" alt=""></img>
             </div>
           </div>
-          <div className={`${styles.list_data} col-4 ms-3`}>
-            <div className="row mt-2 mx-3 fs-5">
-              Total: <b className="text-center fs-2">{total()}</b>
-            </div>
+          <div className={`${styles.list_data} col-3 ms-3`}>
+            <div className="row mt-3 fs-3 mx-5 col-3">
+            <h3><b>Total: </b></h3> 
+            </div>      
             <div className={`${styles.img_inicio} row`}>
-              <img className="col-3" src="/total.svg" alt=""></img>
+              <b className={`${styles.total_bienvenidos} fs-2 col-5`}>{total()}</b>
+              <img className="col-6" src="/total.svg" alt=""></img>
             </div>
           </div>
         </div>

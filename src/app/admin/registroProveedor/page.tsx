@@ -13,6 +13,22 @@ export default function RegistroProveedor(){
     const [telefono, setTelefono] = useState(0);
     const router = useRouter();
     const add = ()=>{
+        if (nombre.trim() === '' || nombre.length < 3) {
+            Swal.fire("Completa correctamente el nombre.", "", "error")
+            return;           
+        }else if (nit.toString().length !== 10) {
+            Swal.fire("Completa correctamente el NIT/Documento", "", "error")
+            return;
+        } else if (apellido.trim() === "" || apellido.length < 3) {
+            Swal.fire("Completa correctamente los apellidos", "", "error")
+            return;
+        } else if (!direccion){
+            Swal.fire("Completa correctamente la dirección", "", "error")
+            return;
+        } else if (telefono.toString().length !== 10){
+            Swal.fire("Completa correctamente el teléfono", "", "error")
+            return;
+        } 
         axios.post("http://localhost:4000/api/supplier",{
             nit:nit,    
             nombre:nombre,
@@ -21,7 +37,7 @@ export default function RegistroProveedor(){
             telefono:telefono
         }).then(()=>{
             Swal.fire("Proveedor registrado", "", "success").then(() => {
-                router.push("/admin/proveedores");
+                router.push("/admin/vistaProveedores");
             })
         });
     }
@@ -32,7 +48,7 @@ export default function RegistroProveedor(){
     </div>
     <div className="row justify-content-center">
         <div className="form col-5 py-4">
-            <label className="texto_menu col-4">Nit/Documento</label>
+            <label className="texto_menu col-4">NIT/Documento</label>
             <input onChange={(event) => { setNit(parseInt(event.target.value)); }}type="number" className="col-7 m-2 input_form" ></input>
             <label className="texto_menu col-4">Nombre</label>
             <input onChange={(event) => { setNombre(event.target.value); }}type="text" className="col-7 m-2 input_form" ></input>

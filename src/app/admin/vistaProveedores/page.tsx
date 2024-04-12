@@ -18,8 +18,8 @@ export default function Provedores(){
     <div className="row justify-content-center">
     <button className={`${styles.ingresar} col-2 text-center align-items-center p-1 `} type="submit"><a href="/admin/registroProveedor" className={`${styles.text_form}`}>Adicionar</a></button>      
     </div>
-    <div className="col-8 text-center my-3 container">
-    <div className="texto_menu mx-2 my-1 row table">
+    <div className="col-9 text-center my-3 container">
+        <div className="texto_menu mx-2 my-1 row table">
             <div className="col-2">Documento</div>
             <div className="col-2">Nombres</div>
             <div className="col-3">Apellidos</div>

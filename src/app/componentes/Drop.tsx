@@ -2,14 +2,15 @@
 if (typeof window !== 'undefined') {
   require('bootstrap/dist/js/bootstrap.bundle.min.js');
 }
-import { FaRegUserCircle } from "react-icons/fa";
+// import { FaRegUserCircle } from "react-icons/fa";
+import { BsPersonCircle } from "react-icons/bs";
+
 export default function Drop(){
   return (
     <>
-    <div>
-    
-        <div className="text-center mt-5 pb-5 border-bottom">
-            <FaRegUserCircle  style={{color: "#663300", fontSize: '80px'}}/>
+    <div>  
+        <div className="text-center mt-5 pb-5">
+            <BsPersonCircle  style={{color: "#663300", fontSize: '90px'}}/>
         </div>
         <a className="btn " href="/admin/vistaBienvenido">
           <span className='texto_menu'>Inicio</span>

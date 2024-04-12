@@ -49,7 +49,7 @@ export default function Usuarios(){
       </div>
     </div>
 
-    <div className="col-12 col-md-10 col-lg-8 text-center my-3 container">
+    <div className="col-12 col-md-10 col-lg-10 text-center my-3 container">
       <div className="texto_menu mx-2 my-1 row table">
         <div className="col-2 ">Documento</div>
         <div className="col-2 ">Nombres</div>
@@ -59,15 +59,15 @@ export default function Usuarios(){
       <div className="row mx-2 my-1 texto_drop">
         {usuariosList.map((val,key)=>{
           return <>
-          <div className="col-2" >{val.cedula}</div>
+          <div className="col-2">{val.cedula}</div>
           <div className="col-2 ">{val.nombre}</div>
           <div className="col-2 ">{val.apellido}</div>
           <div className="col-3 ">{val.correo}</div>
-          <button className={`${styles.ingresar} m-1 col-2 text-center align-items-center p-1 `} onClick={()=>{
+          <button className={`${styles.ingresar} m-1 col-2 text-center align-items-center p-1 mx-5`} onClick={()=>{
             eliminar(val.cedula);
           }} type="submit"><a className={`${styles.text_form}`}>Eliminar</a></button>
           </>})
-          }
+        }
       </div>
     </div>
   </>)

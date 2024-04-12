@@ -4,6 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
+import moment from "moment";
 
 export default function RegistroInsumos(){
     const [nombre, setNombre] = useState("");
@@ -13,8 +14,32 @@ export default function RegistroInsumos(){
     const [f_vencimiento, setF_vencimiento] = useState(Date);
     const [costo, setCosto] = useState(0);
     const router = useRouter();
+
     const add = ()=>{
-        axios.post("http://localhost:4000/api/rawMaterial",{    
+        function isValidDate(date: any) {
+            return moment(date, 'YYYY-MM-DD', true).isValid();
+        }
+        if (nombre.trim() === '' || nombre.length < 3) {
+            Swal.fire("Completa correctamente el nombre.", "", "error")
+            return;           
+        }else if (!cantidad) {
+            Swal.fire("Completa correctamente la cantidad", "", "error")
+            return;
+        } else if (!imagen) {
+            Swal.fire("Completa correctamente la url", "", "error")
+            return;
+        } else if (!isValidDate(f_ingreso)){
+            Swal.fire("Completa correctamente la fecha de ingreso", "", "error")
+            return;
+        } else if (!isValidDate(f_vencimiento)){
+            Swal.fire("Completa correctamente la fecha de vencimiento", "", "error")
+            return;
+        } else if (!costo){
+            Swal.fire("Completa correctamente el costo", "", "error")
+            return;
+        }
+
+        axios.post(`http://localhost:4000/api/rawMaterial`,{    
             nombre:nombre,
             cantidad:cantidad,
             imagen:imagen,

@@ -1,8 +1,10 @@
 "use client";
-import styles from "@/app/admin/admin.module.css";
+import styles from "../admin.module.css";
+import style from "../../usuario/usuario.module.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { isTemplateExpression } from "typescript";
+
 export default function BalanceDiario() {
   const [diarioList, setDiario] = useState([]);
   const [ingresosList, setIngresos] = useState(0);
@@ -51,27 +53,28 @@ export default function BalanceDiario() {
         })}
       </div>
 
-      <div className="container justify-content-center my-3">
+      <div className="container mx-5 my-3">
         <div className="row">
           <div className={`${styles.list} col-5 ms-4`}></div>
-          <div className={`${styles.list} col-5 ms-3`}></div>
+          <div className={`${styles.list} col-5 ms-4`}></div>
         </div>
         <div className="row">
           <div className={`${styles.list_data} col-5 ms-4`}>
-              <div className="row mt-2">
-              Ingresos: <b className="text-center"> 
-              {ingresosList}</b>
-            </div>
+              <div className="row mt-2 fs-2 mx-5 col-8">
+                <h2><b> Ingresos: </b></h2> 
+              </div>
             <div className={`${styles.img_inicio} row `}>
-              <img className="col-4" src="/incremento.svg" alt=""></img>
+              <b className={`${styles.ingresos_egresos} fs-1 mx-5 col-5`}> {ingresosList}</b>
+              <img className="col-4 " src="/incremento.svg" alt=""></img>
             </div>
           </div>
-          <div className={`${styles.list_data} col-5 ms-3`}>
-            <div className="row mt-2">
-              Egresos: <b className="text-center">{egresosList}</b>
+          <div className={`${styles.list_data} col-5 ms-4`}>
+            <div className="row mt-2 fs-2 mx-5 col-8">
+              <h2><b> Egresos:  </b></h2> 
             </div>
             <div className={`${styles.img_inicio} row `}>
-              <img className="col-3" src="/decremento.svg" alt=""></img>
+              <b className={`${styles.ingresos_egresos} fs-1 mx-5 col-5`}>{egresosList}</b>
+              <img className="col-3 pt-4 mx-4 mt-3" src="/decremento.svg" alt=""></img>
             </div>
           </div>
         </div>

@@ -21,15 +21,15 @@ export default function Inicio(){
                     Alias quae vel voluptate doloribus suscipit enim tenetur perferendis error commodi? Aut numquam libero, odio inventore repudiandae iure esse commodi, praesentium porro nesciunt nobis itaque quos nostrum error delectus? Enim?</span>
             </div> 
             <div className="row text-center justify-content-center my-5 mx-2 p-0">
-                <div className={`${styles.form_carta} col-4 mx-3`}>
+                <div className={`${styles.form_car} col-4 mx-3`}>
                     <span className={`${styles.text_carta} `}>Horario</span><br></br>
                     <span className={`${styles.text_form} px-5`}> Lorem ipsum dolor</span>
                 </div>
-                <div className={`${styles.form_carta} col-4 mx-3`}>
+                <div className={`${styles.form_car} col-4 mx-3`}>
                     <span className={`${styles.text_carta} `}>Ubicación</span><br></br>
                     <span className={`${styles.text_form} px-5`}> Lorem ipsum dolor</span>
                 </div> 
-                <div className={`${styles.form_carta} col-4 mx-3`}>
+                <div className={`${styles.form_car} col-4 mx-3`}>
                     <span className={`${styles.text_carta} `}>Contacto</span><br></br>
                     <span className={`${styles.text_form} px-5`}> Lorem ipsum dolor</span>
                 </div> 
