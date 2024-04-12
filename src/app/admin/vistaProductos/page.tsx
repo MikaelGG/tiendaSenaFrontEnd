@@ -62,7 +62,7 @@ export default function Carta() {
                             </Link>
                             <button className={`${styles.ingresar} col-5 text-center align-items-center p-1 `} onClick={() => {
                                 eliminar(val.codigo);
-                            }} type="submit"><a className={`${styles.text_form}`}>Dar de baja</a></button>ñajslñda
+                            }} type="submit"><a className={`${styles.text_form}`}>Dar de baja</a></button>
                         </div>
                     </div>
                 </>
