@@ -4,16 +4,17 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Adicionar from "@/app/componentes/botones/adicionar";
 import { useRouter } from "next/navigation";
+import Swal from "sweetalert2";
 
 export default function PageFactura() {
     const router = useRouter();
     const [fecha, setFecha] = useState('');
     const [estado, setEstado] = useState('');
     const [total, setTotal] = useState(0);
-    const [consumidor, setConsumidor] = useState('');
+    const [consumidor, setConsumidor] = useState(0);
     const [consumidoresList, setConsumidoresList] = useState([]);
     const [productosList, setProductosList] = useState([]);
-    const [filas, setFilas] = useState([{id_producto: 0, producto: 0, cantidad: 0, precio: 0, subtotal: 0 }]);
+    const [filas, setFilas] = useState([{id_producto: 0, codigo: 0, cantidad: 0, precio: 0, subtotal: 0 }]);
 
 
     useEffect(() => {
@@ -36,12 +37,12 @@ export default function PageFactura() {
     }, []);
 
     const agregarFila = () => {
-        setFilas([...filas, {id_producto: 0, producto: 0, cantidad: 0, precio: 0, subtotal: 0 }]);
+        setFilas([...filas, {id_producto: 0, codigo: 0, cantidad: 0, precio: 0, subtotal: 0 }]);
     };
 
     const handleProductoChange = (index: any, value: any) => {
         const newFilas = [...filas];
-        newFilas[index].producto = value;
+        newFilas[index].codigo = value;
         setFilas(newFilas);
     };
 
@@ -59,18 +60,18 @@ export default function PageFactura() {
         setFilas(newFilas);
     };
 
-    const add = async () => {
-        
+    const add = async () => {    
         // Luego, envía el subtotal general junto con los demás datos al backend
         await axios.post("http://localhost:4000/api/invoice", {
             fecha: fecha,
             estado: estado, // Enviar el subtotal general
             total: total,
-            consumidor: consumidor,
-            producto: 1
+            consumidor: consumidor
         }).then(res => {
             addProduct(res.data);
-            alert("Factura registrada");
+            Swal.fire("Factura registrada con exito", "", "success").then(() => {
+                router.push("/admin/vistaFactura");
+            });
         }).catch(error => {
             console.error("Error al enviar la factura:", error);
             alert("Hubo un error al registrar la factura. Consulta la consola para más detalles.");
@@ -82,12 +83,10 @@ export default function PageFactura() {
 
         filas.forEach(fila => {
             axios.post("http://localhost:4000/api/invoiceProd",{
-                id_producto: fila.producto,
+                id_producto: fila.codigo,
                 id_factura: id_fact,
                 precio_u: fila.precio,
                 cantidad: fila.cantidad
-            }).then(() => {
-                router.push("/admin/vistaFactura");
             }).catch(error => {
                 console.error("Error al enviar la factura:", error);
                 alert("Hubo un error al registrar la factura. Consulta la consola para más detalles.");
@@ -105,7 +104,7 @@ export default function PageFactura() {
                     <label className="texto_menu col-4">Consumidor</label>
                     <select onChange={(event) => { setConsumidor(event.target.value); }} className="col-7 m-3 input_form">
                         {consumidoresList && consumidoresList.length > 0 ? ( consumidoresList.map((val, key) => (
-                            <option key={key} value={val.nombre}>{val.nombre} {val.apellido}</option>
+                            <option key={key} value={val.cedula}>{val.nombre} {val.apellido}</option>
                             ))
                             ) : (
                                 <option value="">Cargando...</option>

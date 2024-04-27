@@ -10,7 +10,7 @@ export default function RegistroProveedor(){
     const [nombre, setNombre] = useState("");
     const [apellido, setApellido] = useState("");
     const [direccion, setDireccion] = useState("");
-    const [telefono, setTelefono] = useState(0);
+    const [telefono, setTelefono] = useState("");
     const router = useRouter();
     const add = ()=>{
         if (nombre.trim() === '' || nombre.length < 3) {
@@ -25,11 +25,11 @@ export default function RegistroProveedor(){
         } else if (!direccion){
             Swal.fire("Completa correctamente la dirección", "", "error")
             return;
-        } else if (telefono.toString().length !== 10){
+        } else if (telefono.length !== 10){
             Swal.fire("Completa correctamente el teléfono", "", "error")
             return;
         } 
-        axios.post("http://localhost:4000/api/supplier",{
+        axios.post(`http://localhost:4000/api/supplier`,{
             nit:nit,    
             nombre:nombre,
             apellido:apellido,
@@ -57,7 +57,7 @@ export default function RegistroProveedor(){
             <label className="texto_menu col-4">Direccion</label>
             <input onChange={(event) => { setDireccion(event.target.value); }}type="text" className="col-7 m-2 input_form" ></input>
             <label className="texto_menu col-4">Telefono</label>
-            <input onChange={(event) => { setTelefono(parseInt(event.target.value)); }}type="number" className="col-7 m-2 input_form" ></input>
+            <input onChange={(event) => { setTelefono(event.target.value); }}type="number" className="col-7 m-2 input_form" ></input>
             <div className="row text-center my-3">
             <div className=""onClick={add}><Registrar/></div><br></br>
         </div>

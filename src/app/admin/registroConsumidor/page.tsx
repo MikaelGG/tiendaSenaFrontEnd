@@ -35,7 +35,10 @@ export default function RegistroConsumidor(){
             Swal.fire("Consumidor registrado", "", "success").then(() => {
                 router.push("/admin/vistaConsumidores");
             })
-        });
+        }).catch((error) => {
+            console.error("Error al registrar el consumidor:", error);
+            Swal.fire("Error al registrar el consumidor", "", "error");
+          });
     }
     return(<>
         <div className="row my-4">

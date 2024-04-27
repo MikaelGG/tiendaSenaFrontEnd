@@ -18,24 +18,24 @@ export default function Provedores(){
     <div className="row justify-content-center">
     <button className={`${styles.ingresar} col-2 text-center align-items-center p-1 `} type="submit"><a href="/admin/registroProveedor" className={`${styles.text_form}`}>Adicionar</a></button>      
     </div>
-    <div className="col-9 text-center my-3 container">
+    <div className="col-11 text-center my-3 container">
         <div className="texto_menu mx-2 my-1 row table">
             <div className="col-2">Documento</div>
             <div className="col-2">Nombres</div>
-            <div className="col-3">Apellidos</div>
-            <div className="col-2">Direccion</div>
+            <div className="col-2">Apellidos</div>
+            <div className="col-3">Direccion</div>
             <div className="col-3">Telefono</div>
         </div>
-        <div className="row mx-2 my-1 texto_drop">
-        {proveedoresList.map((val,key)=>{
-            return <>
-            <div className="col-2">{val.nit}</div>
-            <div className="col-2">{val.nombre}</div>
-            <div className="col-3">{val.apellido}</div>
-            <div className="col-2 ps-3">{val.direccion}</div>
-            <div className="col-3 ps-3">{val.telefono}</div>
-            </>})
-        }
+        <div className="row mx-2 texto_drop my-3">
+            {proveedoresList.map((val,key)=>{
+                return <>
+                <div className="col-2 mb-3">{val.nit}</div>
+                <div className="col-2 mb-3">{val.nombre}</div>
+                <div className="col-2 mb-3">{val.apellido}</div>
+                <div className="col-3 mb-3 ps-3">{val.direccion}</div>
+                <div className="col-3 mb-3 ps-3">{val.telefono}</div>
+                </>})
+            }
         </div>
     </div>
  </>)

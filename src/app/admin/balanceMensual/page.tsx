@@ -46,10 +46,10 @@ export default function BalanceMensual(){
         <div className="row">
           <div className={`${styles.list_data} col-5 ms-4`}>
               <div className="row mt-2 fs-2 mx-5 col-8">
-                <h2><b>Ingresos:</b></h2> 
+                <h2><b>Ingresos: </b></h2> 
               </div>
             <div className={`${styles.img_inicio} row `}>
-              <b className={`${styles.ingresos_egresos} fs-1 mx-5 col-5`}> {ingresosList}</b>
+              <b className={`${styles.ingresos_egresos} fs-1 mx-5 col-5`}> {ingresosList}999000</b>
               <img className="col-4" src="/incremento.svg" alt=""></img>
             </div>
           </div>
@@ -58,7 +58,7 @@ export default function BalanceMensual(){
               <h2><b>Egresos: </b></h2>
             </div>
             <div className={`${styles.img_inicio} row `}>
-              <b className={`${styles.ingresos_egresos} fs-1 mx-5 col-5`}>{egresosList}</b>
+              <b className={`${styles.ingresos_egresos} fs-1 mx-5 col-5`}>{egresosList}999000</b>
               <img className="col-3 pt-4 mx-4 mt-3" src="/decremento.svg" alt=""></img>
             </div>
           </div>

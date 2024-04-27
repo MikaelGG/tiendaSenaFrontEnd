@@ -114,3 +114,6 @@
 .containerF{
     display: flex;
 }
+.paddingR{
+    padding-right: 45px;
+}

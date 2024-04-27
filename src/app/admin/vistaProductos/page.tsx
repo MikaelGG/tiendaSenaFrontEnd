@@ -56,7 +56,7 @@ export default function Carta() {
                         <div className="col-12 text-center"><b>Precio </b>{val.precio}</div>
                         <div className="col-12 text-center"><b>Cantidad </b>{val.cantidad}</div>
                         <div className="col-12 justify-content-center">
-                            <Link href={`/admin/carta/${val.codigo}`} className={`${styles.text_form}`}>
+                            <Link href={`/admin/vistaProductos/${val.codigo}`} className={`${styles.text_form}`}>
                                 <button className={`${styles.ingresar} col-5 text-center align-items-center m-3 p-1 `}
                                     type="submit">Editar</button>
                             </Link>

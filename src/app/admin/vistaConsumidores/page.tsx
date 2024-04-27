@@ -26,13 +26,13 @@ export default function Consumidores(){
                 <div className="col-3">ID/NIT</div>
                 <div className="col-3">Telefono</div>
             </div>
-            <div className="row mx-2 my-1 texto_drop">
+            <div className="row mx-2 my-1 my-3 texto_drop">
             {consumidoresList.map((val,key)=>{
                 return <>
-                <div className="col-3">{val.nombre}</div>
-                <div className="col-3">{val.apellido}</div>
-                <div className="col-3">{val.cedula}</div>
-                <div className="col-3">{val.telefono}</div>
+                <div className="col-3 mb-3">{val.nombre}</div>
+                <div className="col-3 mb-3">{val.apellido}</div>
+                <div className="col-3 mb-3">{val.cedula}</div>
+                <div className="col-3 mb-3">{val.telefono}</div>
                 </>})
             }
             </div>

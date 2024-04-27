@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Registrar from "@/app/componentes/botones/registrar";
 import style from "@/app/admin/admin.module.css";
+import Swal from "sweetalert2";
 
 
 export default function editUtensilios(){
@@ -34,8 +35,9 @@ export default function editUtensilios(){
         event.preventDefault();
         axios.put(`http://localhost:4000/api/utensil/${id}`, producto)
         .then(() => {
-            alert("Producto editado correctamente");
-            route.push("/admin/inventarioUtensilios");
+            Swal.fire("Utensilio editado correctamente", "", "success").then(() =>{
+                route.push("/admin/inventarioUtensilios");
+            })
         })
         .catch(error => {
             console.error('Error al editar el producto:', error);
@@ -55,9 +57,9 @@ export default function editUtensilios(){
                     <label className="texto_menu col-4">Imagen</label>
                     <input type="text" className="col-7 m-2 input_form" onChange={handleChange} name='imagen' value={producto.imagen}></input>
                     <label className="texto_menu col-4">Nombre</label>
-                    <input type="text" className="col-7 m-2 input_form" onChange={handleChange} name='nombre' value={producto[0].nombre || ''}></input>
+                    <input type="text" className="col-7 m-2 input_form" onChange={handleChange} name='nombre' value={producto.nombre || ''}></input>
                     <label className="texto_menu col-4">Cantidad</label>
-                    <input type="number" className="col-7 m-2 input_form" onChange={handleChange} name='cantidad' value={producto[0].cantidad || ''}></input>
+                    <input type="number" className="col-7 m-2 input_form" onChange={handleChange} name='cantidad' value={producto.cantidad || ''}></input>
                     <div className="row text-center my-3">
                         <div className="btn"><Registrar/></div><br></br>
                     </div>
