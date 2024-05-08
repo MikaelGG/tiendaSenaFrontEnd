@@ -14,6 +14,7 @@ export default function RegEvento(){
     const [amPmInicio, setAmPmInicio] = useState("");
     const [hora_fin, setHora_fin] = useState("");
     const [amPmFin, setAmPmFin] = useState("");
+    const [titulo, setTitulo] = useState("");
     const [imagen, setImagen] = useState("");
     const [descripcion, setDescripcion] = useState("");
     const [cupo, setCupo] = useState(0);
@@ -43,10 +44,11 @@ export default function RegEvento(){
             return;
         }
 
-        const horaInicioCompleta = `${hora_inicio} ${amPmInicio}`;
-        const horaFinCompleta = `${hora_fin} ${amPmFin}`;
+        const horaInicioCompleta = `${hora_inicio} ${amPmInicio}`.toLowerCase();
+        const horaFinCompleta = `${hora_fin} ${amPmFin}`.toLowerCase();
         
         await axios.post(`http://localhost:4000/api/event`,{
+            titulo:titulo,
             fecha:fecha,
             hora_inicio: horaInicioCompleta,
             hora_fin: horaFinCompleta,
@@ -75,8 +77,10 @@ export default function RegEvento(){
         <div className="row justify-content-center">
             <div className="form col-5 py-4">
                 <form method="post" action="vistaEvento">
+                    <label className="texto_menu col-4">Nombre del evento</label>
+                    <input type="text" className="col-7 m-2 input_form" onChange={(event) => {setTitulo(event.target.value)}} />
                     <label className="texto_menu col-4">Fecha del evento</label>
-                    <input onChange={(event) => { setFecha(event.target.value); }} type="date" min={getFechaActual()} className="col-7 m-2 input_form"></input>
+                    <input onChange={(event) => { setFecha(event.target.value) }} type="date" min={getFechaActual()} className="col-7 m-2 input_form"></input>
                     <label className="texto_menu col-4">Hora de inicio</label>
                     <input onChange={(event) => { setHora_inicio(event.target.value); }} type="text" className="col-4 m-2 input_form"></input>
                     <select

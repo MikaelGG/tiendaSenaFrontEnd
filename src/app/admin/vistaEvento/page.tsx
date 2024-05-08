@@ -1,6 +1,7 @@
 'use client'
 import styles from "@/app/usuario/usuario.module.css";
 import style from "@/app/admin/admin.module.css";
+import event from "@/app/admin/event.module.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
@@ -12,14 +13,14 @@ const backgroundStylesU: React.CSSProperties = {
     minHeight: '100vh',
 };
 
-
 export default function Eventos(){
     const [eventosList,setEventos] = useState([]);
-  useEffect(() =>{
-    axios.get(`http://localhost:4000/api/event`,).then((response)=>{
-        setEventos(response.data);
-    });
-  }, [])
+
+    useEffect(() =>{
+        axios.get(`http://localhost:4000/api/event`,).then((response)=>{
+            setEventos(response.data);
+        });
+    }, [])
     console.log(eventosList)
     
     const eliminar = (codigo: any) => {
@@ -66,28 +67,27 @@ export default function Eventos(){
                 </div>
             </div>
             <br />
-            <div className="row justify-content-center">
                 {eventosList.map((val,key)=>{
-                    return <>
-                        <div className={`${styles.form_carta} row  m-3 p-5`}>
-                            <div className="col-4 container-fluid g-0 ">
-                                <img className={`${style.img_invent} w-100`} src={val.imagen} alt="" />
+                    return (<>
+                        <article className={`${event.postcard} ${event.light} ${event.blue} ${event.text_nav} `}>
+                            <a className={`${event.postcard__img_link} `}>
+                                <img className={`${event.postcard__img}`} src={val.imagen} alt="Image Title" />
+                            </a>
+                            <div className={`${event.postcard__text} ${event.tdark}`}>
+                                <h1 className={`${event.postcard__title}  ${event.blue}`}>{val.titulo}</h1>
+                                <div className={`${event.postcard__bar}`}></div>
+                                <div className={`${event.postcard__previewtxt}`}>{val.descripcion}</div>
+                                <ul className={`${event.postcard__tagbox}`}>
+                                    <li className={`${event.tag__item}`}><i className={`fas fa-users ${event.mr_2}`}></i>{val.cupo}</li>
+                                    <li className={`${event.tag__item}`}><i className={`fas fa-clock ${event.mr_2}`}></i>{val.hora_inicio} - {val.hora_fin}</li>
+					                <li className={`${event.tag__item} `}><i className={`fas fa-calendar ${event.mr_2}`}></i>{formatDate(val.fecha)}</li>
+                                </ul>
+                                <button className={`${styles.ingresar} col-3 text-center align-items-center mt-3`} onClick={()=>{ eliminar(val.codigo)}} 
+                                type="submit"><a className={`${styles.text_form}`}>Eliminar</a></button>
                             </div>
-                            <div className="col-6">
-                                <span className={`${styles.text_carta} col-8`}>Hora: {val.hora_inicio} - {val.hora_fin}</span><br></br>
-                                <span className={`${styles.text_form} col-10`}> {val.descripcion}</span>
-                                    <div className="col-3 my-1">
-                                        <span className={`${styles.text_eventos} col-10 fs-6`}> {formatDate(val.fecha)}<br></br>Cupos: {val.cupo}</span> 
-                                    </div>
-                                    <br />
-                                    <button className={`${styles.ingresar} col-5 text-center align-items-center p-1 `} onClick={()=>{
-                                    eliminar(val.codigo);
-                                    }} type="submit"><a className={`${styles.text_form}`}>Eliminar</a></button>
-                            </div>
-                        </div>
-                    </>})
-                }
-            </div>    
-        </div>
+                        </article>
+                    </>)
+                })}
+        </div>    
     </>)
 }

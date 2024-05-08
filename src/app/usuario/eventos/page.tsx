@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "../usuario.module.css";
+import event from "@/app/admin/event.module.css";
 
 const backgroundStylesU: React.CSSProperties = {
   backgroundImage: `url('/userp.svg/')`,
@@ -37,39 +38,26 @@ const Eventos = () => {
             </span>
           </div>
         </div>
-      <div className="row justify-content-center">
         {eventosList.map((val, key) => {
-
-          return (
-            <div key={key} className={`${styles.form_carta} row m-4 p-4`}>
-              <div className="col-4 container-fluid g-0 ">
-                <img
-                  className={`${styles.evento_imagen} col-8 px-0 rounded-start mx-3 `}
-                  src={val.imagen}
-                  alt=""
-                ></img>
-              </div>
-              <div className="col-6">
-                <span className={`${styles.text_carta} col-8`}>
-                  {val.hora_inicio} - {val.hora_fin}
-                </span>
-                <br></br>
-                <span className={`${styles.text_form} col-10`}>
-                  {val.descripcion}
-                </span>
-                <div className="col-3 my-1">
-                  <span className={`${styles.text_eventos} col-10 fs-6`}>
-                    {formatDate(val.fecha)}
-                    <br></br>
-                    Cupos: {val.cupo}
-                  </span>
+          return (<>
+            <article className={`${event.postcard} ${event.light} ${event.blue} ${event.text_nav} `}>
+                <a className={`${event.postcard__img_link} `}>
+                    <img className={`${event.postcard__img}`} src={val.imagen} alt="Image Title" />
+                </a>
+                <div className={`${event.postcard__text} ${event.tdark}`}>
+                    <h1 className={`${event.postcard__title}  ${event.blue}`}>{val.titulo}</h1>
+                    <div className={`${event.postcard__bar}`}></div>
+                    <div className={`${event.postcard__previewtxt}`}>{val.descripcion}</div>
+                    <ul className={`${event.postcard__tagbox}`}>
+                        <li className={`${event.tag__item}`}><i className={`fas fa-users ${event.mr_2}`}></i>{val.cupo}</li>
+                        <li className={`${event.tag__item}`}><i className={`fas fa-clock ${event.mr_2}`}></i>{val.hora_inicio} - {val.hora_fin}</li>
+                        <li className={`${event.tag__item} `}><i className={`fas fa-calendar ${event.mr_2}`}></i>{formatDate(val.fecha)}</li>
+                    </ul>
                 </div>
-              </div>
-            </div>
-          );
-        })}
+            </article>
+        </>)
+          })}
       </div>
-    </div>
     </>
   );
 };

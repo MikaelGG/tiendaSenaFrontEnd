@@ -11,7 +11,9 @@ export default function Consumidores(){
             setConsumidores(response.data);
         });
     }, [])
-    console.log(consumidoresList)
+
+
+
     return(<>
         <div className="row my-4">
             <div className="text_nav text-center"><a className="tittle">Consumidores Registrados</a></div>
@@ -19,7 +21,7 @@ export default function Consumidores(){
         <div className="row justify-content-center">
             <a href="/admin/registroConsumidor" className="text-center"><Registrar/></a> 
         </div>
-        <div className="col-8 text-center my-3 container">
+        <div className="col-10 text-center my-3 container">
         <div className="texto_menu mx-2 my-1 row table">
                 <div className="col-3">nombre</div>
                 <div className="col-3">apellido</div>
