@@ -15,7 +15,12 @@ export default function editInsumos() {
     useEffect(() => {
         axios.get(`http://localhost:4000/api/rawMaterial/${id}`,).then((response) => {
             const product = response.data[0]
-            setProducto(product)
+            const formattedProduct = {
+                ...product,
+                f_ingreso: formatApiDate(product.f_ingreso),
+                f_vencimiento: formatApiDate(product.f_vencimiento),
+            };
+            setProducto(formattedProduct);
             console.log(producto)
             console.log(product)
         });
@@ -40,13 +45,13 @@ export default function editInsumos() {
         })
     }
 
-    function formatDate(dateString: any) {
+    function formatApiDate(dateString: any) {
         const date = new Date(dateString);
         const year = date.getFullYear();
         const month = (date.getMonth() + 1).toString().padStart(2, '0');
         const day = date.getDate().toString().padStart(2, '0');
         return `${year}-${month}-${day}`;
-      }
+    }
 
     return (
         <>
@@ -63,21 +68,21 @@ export default function editInsumos() {
                 ></img>
             </div>
             <div className="row my-3 justify-content-center">
-                <form className="form col-5 py-4" onSubmit={e => handleSubmit(e)}>
+                <form className="form col-5 py-4" onSubmit={handleSubmit}>
                     <label className="texto_menu col-4">Imagen</label>
-                    <input type="text" className="col-7 m-2 input_form" onChange={e => handleChange(e)} name='imagen' value={producto.imagen}></input>
+                    <input type="text" className="col-7 m-2 input_form" onChange={handleChange} name='imagen' value={producto.imagen}></input>
                     <label className="texto_menu col-4">Nombre</label>
-                    <input type="text" className="col-7 m-2 input_form" onChange={e => handleChange(e)} name='nombre' value={producto.nombre}></input>
+                    <input type="text" className="col-7 m-2 input_form" onChange={handleChange} name='nombre' value={producto.nombre}></input>
                     <label className="texto_menu col-4">Cantidad</label>
-                    <input type="number" className="col-7 m-2 input_form" onChange={e => handleChange(e)} name='cantidad' value={producto.cantidad}></input>
+                    <input type="number" className="col-7 m-2 input_form" onChange={handleChange} name='cantidad' value={producto.cantidad}></input>
                     <label className="texto_menu col-4">Fecha Ingreso</label>
-                    <input type="date" className="col-7 m-2 input_form" onChange={e => handleChange(e)} name='f_ingreso' value={formatDate(producto.f_ingreso)}></input>
+                    <input type="date" className="col-7 m-2 input_form" onChange={handleChange} name='f_ingreso' value={formatApiDate(producto.f_ingreso)}></input>
                     <label className="texto_menu col-4">Fecha Vencimiento</label>
-                    <input type="date" className="col-7 m-2 input_form" onChange={e => handleChange(e)} name='f_vencimiento' value={formatDate(producto.f_vencimiento)}></input>
+                    <input type="date" className="col-7 m-2 input_form" onChange={handleChange} name='f_vencimiento' value={formatApiDate(producto.f_vencimiento)}></input>
                     <label className="texto_menu col-4">Costo</label>
-                    <input type="number" className="col-7 m-2 input_form" onChange={e => handleChange(e)} name='costo' value={producto.costo}></input>
+                    <input type="number" className="col-7 m-2 input_form" onChange={handleChange} name='costo' value={producto.costo}></input>
                     <div className="row text-center my-3">
-                        <div className="">
+                        <div className="btn">
                             <Registrar />
                         </div>
                         <br></br>

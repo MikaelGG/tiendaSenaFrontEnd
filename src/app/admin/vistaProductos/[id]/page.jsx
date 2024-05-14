@@ -15,6 +15,7 @@ const EditarProducto = () => {
         axios.get(`http://localhost:4000/api/products/${id}`).then((response) => {
             const product = response.data[0];
             setProducto(product);
+            setSelectedType(product.tipo);
         });
     }, [id]);
 
@@ -73,8 +74,11 @@ const EditarProducto = () => {
                     <input onChange={handleChange} value={producto.imagen} name="imagen" type="text" className="col-7 m-2 input_form" />
                     <label className="texto_menu col-4">Nombre</label>
                     <input onChange={handleChange} value={producto.nombre} name='nombre' type="text" className="col-7 m-2 input_form" />
-                    <label className="texto_menu col-4">Descripción</label>
-                    <input onChange={handleChange} value={producto.descripcion} name='descripcion' type="textarea" className="col-7 m-2 input_form" />
+                    <div className="d-flex align-items-start">
+                        <label className="texto_menu col-4 mt-2">Descripción</label>
+                        <textarea cols="30" rows="5" onChange={handleChange} value={producto.descripcion} name="descripcion" type="textarea" className="col-7 m-2 input_form"
+                        ></textarea>
+                    </div>
                     <label className="texto_menu col-4">Precio</label>
                     <input onChange={handleChange} value={producto.precio} name='precio' type="number" className="col-7 m-2 input_form" />
                     <label className="texto_menu col-4">Tipo</label>

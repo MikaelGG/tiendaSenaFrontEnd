@@ -24,13 +24,13 @@ export default function Carta() {
     const setInitialState = (data: any) => {
         const cafesProducts = data.filter(product => product.tipo === 'cafes');
         setFilteredProducts(cafesProducts);
-        setBotonSeleccionado(cafesProducts);
+        setBotonSeleccionado('cafes');
     };
 
     const eliminar = (codigo: any) => {
         // Mostrar un diálogo de confirmación usando SweetAlert 2
         Swal.fire({
-            title: "¿Estás seguro de que quieres eliminar este producto?",
+            title: "¿Estás segur@ de que quieres eliminar este producto?",
             icon: "warning",
             showCancelButton: true,
             confirmButtonText: "Eliminar",
@@ -76,7 +76,7 @@ export default function Carta() {
                             <img className={`${style.img_invent} `} src={val.imagen} alt="" />
                         </div><br></br>
                         <div className="col-12 text-center">{val.descripcion}</div><br></br>
-                        <div className="col-12 text-center"><b>Precio </b>{formatNumberCOP(val.precio)}</div>
+                        <div className="col-12 text-center fs-5"><b>Precio </b>{formatNumberCOP(val.precio)}</div>
                         <div className="col-12 justify-content-center">
                             <Link href={`/admin/vistaProductos/${val.codigo}`} className={`${styles.text_form}`}>
                                 <button className={`${styles.ingresar} col-5 text-center align-items-center m-3 p-1 `}

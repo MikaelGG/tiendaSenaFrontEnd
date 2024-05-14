@@ -14,41 +14,11 @@ export default function Usuarios(){
   }, [])
 
     console.log(usuariosList)
-
-  const eliminar = (cedula: any) => {
-    // Mostrar un diálogo de confirmación usando SweetAlert 2
-    Swal.fire({
-        title: "¿Estás seguro de que quieres eliminar este usuario?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: "Eliminar",
-        cancelButtonText: "Cancelar"
-    }).then((result) => {
-        if (result.isConfirmed) {
-            // Si el usuario confirma, realiza la llamada a la API para eliminar el elemento
-            axios.delete(`http://localhost:4000/api/user/${cedula}`).then(() => {
-                // Mostrar un mensaje de éxito usando SweetAlert 2
-                Swal.fire("Usuario eliminado", "", "success").then(() => {
-                  location.reload();
-                });
-            });
-        }
-    });
-  };
   
   return(<>
     <div className="row my-4">
       <div className="text_nav text-center"><a className="tittle">Usuarios registrados</a></div>
     </div>
-    {/* <div className="row justify-content-center">
-      <div className="col-sm-6 col-md-4 col-lg-3 text-center p-1">
-      <button className={`${styles.ingresar} w-100`} type="submit">
-        <a href="/admin/registroUsuario" className={`${styles.text_form}`}>
-          Registrar
-        </a>
-      </button>        
-      </div>
-    </div> */}
     <div className="row justify-content-center">
       <a href="/admin/registroUsuario" className="text-center col-6"><Registrar/></a> 
     </div>

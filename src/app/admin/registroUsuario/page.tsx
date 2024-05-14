@@ -31,7 +31,7 @@ export default function RegistroUsuario(){
         } else if (correo.trim() === '' || !validarCorreo(correo)) {
             Swal.fire("Completa correctamente el correo electronico", "", "error")
             return;
-        } else if (cedula.toString().length < 16){
+        } else if (cedula.toString().length > 16){
             Swal.fire("Completa correctamente el documento", "", "error")
             return;
         }

@@ -16,7 +16,7 @@ export default function RegistroProveedor(){
         if (nombre.trim() === '' || nombre.length < 3) {
             Swal.fire("Completa correctamente el nombre.", "", "error")
             return;           
-        }else if (nit.toString().length < 16) {
+        }else if (nit.toString().length > 16) {
             Swal.fire("Completa correctamente el NIT/Documento", "", "error")
             return;
         } else if (apellido.trim() === "" || apellido.length < 3) {
@@ -25,7 +25,7 @@ export default function RegistroProveedor(){
         } else if (!direccion){
             Swal.fire("Completa correctamente la dirección", "", "error")
             return;
-        } else if (telefono.length > 8){
+        } else if (telefono.length > 15){
             Swal.fire("Completa correctamente el teléfono", "", "error")
             return;
         } 

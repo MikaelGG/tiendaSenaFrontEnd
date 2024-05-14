@@ -27,7 +27,7 @@ export default function Menu() {
   const setInitialState = (data: any) => {
     const cafesProducts = data.filter(product => product.tipo === 'cafes');
     setFilteredProducts(cafesProducts);
-    setBotonSeleccionado(cafesProducts);
+    setBotonSeleccionado('cafes');
   };  
 
   const filterProducts = (tipo: any) => {
@@ -51,14 +51,23 @@ export default function Menu() {
         </div>
         <div className="row pt-2 mx-3 justify-content-center m-2">
             {filteredProducts.map((producto, index) => (
-              <div className={`${style.carta} col-4 mt-4 mx-4 py-4`}>
-                <div key={index}></div>
-                <div className="col-12 text-center my-3 fs-2"><b>{producto.nombre}</b></div>
-                <div className={`${styles.img_inicio} col-12 text-center`}>
-                    <img className={`${style.img_invent} `} src={producto.imagen} alt="" />
-                </div><br></br>
-                <div className="col-12 text-center fs-5">{producto.descripcion}</div><br></br>
-                <div className="col-12 text-center fs-3"><b className="fs-4">Precio  </b>{formatNumberCOP(producto.precio)}</div>
+              <div className={`card ${style.carta} mx-5 my-5`} style={{ width: '22rem' }}>
+                <div className="card-body">
+                  <h5 className="card-title text-center fs-3 fw-bold mb-4">{producto.nombre}</h5>
+                  <div className="d-flex justify-content-center mb-4">
+                    <img
+                      src={producto.imagen}
+                      className="card-img-top"
+                      alt={producto.nombre}
+                      style={{ maxWidth: '300px', maxHeight: '300px' }}
+                    />
+                  </div>
+                  <p className="card-text text-center fs-6 mb-4">{producto.descripcion}</p>
+                  <div className="d-flex justify-content-center align-items-center mb-4">
+                    <span className="me-2 fw-bold fs-3">Precio:</span>
+                    <span className="fs-3">{formatNumberCOP(producto.precio)}</span>
+                  </div>
+                </div>
               </div>
             ))}
           </div>

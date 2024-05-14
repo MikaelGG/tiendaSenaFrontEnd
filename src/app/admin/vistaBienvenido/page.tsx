@@ -85,7 +85,7 @@ export default function InicioA() {
             <div className="row mt-3 fs-3 mx-5 col-3">
             <h3><b>Total: </b></h3> 
             </div>      
-            <div className={`${styles.img_inicio} row`}>
+            <div className={`${styles.img_inicio}  row d-flex flex-wrap`}>
               <b className={`${styles.total_bienvenidos} fs-2 col-5`}>{formatNumberCOP(total())}</b>
               <img className="col-5" src="/total.svg" alt=""></img>
             </div>

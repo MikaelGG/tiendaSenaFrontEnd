@@ -16,13 +16,13 @@ export default function RegistroConsumidor(){
         if (nombre.trim() === '' || nombre.length < 3) {
             Swal.fire("Completa correctamente el nombre.", "", "error")
             return;           
-        }else if (cedula.toString().length !== 10) {
+        }else if (cedula.toString().length > 16) {
             Swal.fire("Completa correctamente el NIT/Documento", "", "error")
             return;
         } else if (apellido.trim() === "" || apellido.length < 3) {
             Swal.fire("Completa correctamente los apellidos", "", "error")
             return;
-        } else if (telefono.toString().length !== 10){
+        } else if (telefono.toString().length > 16){
             Swal.fire("Completa correctamente el teléfono", "", "error")
             return;
         } 

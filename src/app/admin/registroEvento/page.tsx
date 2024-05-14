@@ -27,8 +27,8 @@ export default function RegEvento(){
         if (!imagen) {
             Swal.fire("Completa correctamente la imagen.", "", "error")
             return;           
-        }else if (descripcion.length < 205) {
-            Swal.fire("Completa correctamente la descripción", "", "error")
+        }else if (descripcion.length > 205) {
+            Swal.fire("Completa correctamente la descripción, máximo 205 carácteres", "", "error")
             return;
         } else if (!cupo) {
             Swal.fire("Completa correctamente el cupo", "", "error")
@@ -93,7 +93,7 @@ export default function RegEvento(){
                     <input onChange={(event) => { setHora_fin(event.target.value) }} type="text" className="col-4 m-2 input_form"></input>
                     <select
                         onChange={(event) => { setAmPmFin(event.target.value) }} className="col-2 m-2 input_form">
-                        <option>Periodo</option>
+                        <option>Jornada</option>
                         <option value="AM">AM</option>
                         <option value="PM">PM</option>
                     </select>
@@ -101,8 +101,10 @@ export default function RegEvento(){
                     <input onChange={(event) => { setImagen(event.target.value); }}type="text" className="col-7 m-2 input_form"></input>
                     <label className="texto_menu col-4">Cupos disponibles</label>
                     <input onChange={(event) => { setCupo(parseInt(event.target.value)); }}type="number" className="col-7 m-2 input_form"></input> 
-                    <label className="texto_menu col-4">Descripción del <br /> evento</label>
-                    <textarea cols="30" rows="5" onChange={(event) => { setDescripcion(event.target.value); }} type="textarea" className="col-7 m-2 input_form"></textarea>
+                    <div className="d-flex align-items-start ">
+                        <label className="texto_menu col-4 mt-2">Descripción del <br /> evento</label>
+                        <textarea cols="30" rows="5" onChange={(event) => { setDescripcion(event.target.value); }} type="textarea" className="col-7 m-2 input_form"></textarea>
+                    </div>
                     <div className="text-center my-3" onClick={add}><Registrar/></div>
                 </form>
             </div>

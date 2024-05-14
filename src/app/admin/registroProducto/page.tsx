@@ -20,8 +20,8 @@ export default function RegistroCarta(){
         }else if (!imagen) {
             Swal.fire("Completa correctamente la url", "", "error")
             return;
-        } else if (descripcion.length < 205) {
-            Swal.fire("Completa correctamente la descripción", "", "error")
+        } else if (descripcion.length > 205) {
+            Swal.fire("Completa correctamente la descripción, máximo 205 caráteres", "", "error")
             return;
         } else if (!precio){
             Swal.fire("Completa correctamente el precio", "", "error")
@@ -51,9 +51,11 @@ export default function RegistroCarta(){
             <label className="texto_menu col-4">Imagen</label>
             <input  onChange={(event) => { setImagen(event.target.value); }} name="imagen"  type="text" className="col-7 m-2 input_form" multiple ></input>
             <label className="texto_menu col-4">Nombre</label>
-            <input  onChange={(event) => { setNombre(event.target.value); }} value={nombre} type="text" className="col-7 m-2 input_form" ></input>
-            <label className="texto_menu col-4">Descripción</label>
-            <textarea cols="30" rows="5" onChange={(event) => { setDescripcion(event.target.value); }} value={descripcion} type="textarea" className="col-7 m-2 input_form"></textarea>
+            <input  onChange={(event) => { setNombre(event.target.value); }} value={nombre} type="text" className="col-7 m-2 input_form" ></input>     
+            <div className="d-flex align-items-start ">
+                <label className="texto_menu col-4 mt-2">Descripción</label>
+                <textarea cols="30" rows="5" onChange={(event) => { setDescripcion(event.target.value); }} value={descripcion} type="textarea" className="col-7 m-2 input_form"></textarea>
+            </div>
             <label className="texto_menu col-4">Precio</label>
             <input onChange={(event) => { setPrecio(parseInt(event.target.value)); }} value={precio} type="number" className="col-7 m-2 input_form" ></input>
             <label className="texto_menu col-4">Tipo</label>

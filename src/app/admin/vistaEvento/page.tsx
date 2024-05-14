@@ -26,7 +26,7 @@ export default function Eventos(){
     const eliminar = (codigo: any) => {
         // Mostrar un diálogo de confirmación usando SweetAlert 2
         Swal.fire({
-            title: "¿Estás seguro de que quieres eliminar este evento?",
+            title: "¿Estás segur@ de que quieres eliminar este evento?",
             icon: "warning",
             showCancelButton: true,
             confirmButtonText: "Eliminar",

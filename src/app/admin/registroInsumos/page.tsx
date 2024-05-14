@@ -62,7 +62,7 @@ export default function RegistroInsumos(){
             <input onChange={(event) => { setNombre(event.target.value); }}type="text" className="col-7 m-2 input_form" ></input>
             <label className="texto_menu col-4">Cantidad</label>
             <input onChange={(event) => { setCantidad(parseInt(event.target.value)); }}type="number" className="col-7 m-2 input_form" ></input>
-            <label className="texto_menu col-4">imagen</label>
+            <label className="texto_menu col-4">Imagen</label>
             <input onChange={(event) => { setImagen(event.target.value); }}type="text" className="col-7 m-2 input_form" ></input>
             <label className="texto_menu col-4">Fecha Ingreso</label>
             <input onChange={(event) => { setF_ingreso(event.target.value); }}type="date" className="col-7 m-2 input_form" ></input>

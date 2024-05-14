@@ -89,11 +89,12 @@
 .total_bienvenidos{
     display: flex;
     align-items: center;
-    margin-right: 40px;
+    margin-right: 50px;
 }
 .ingresos_egresos{
     display: flex;
     align-items: center;
+    margin-right: 30px;
 }
 .botonCafe{
     background-color: #663300;

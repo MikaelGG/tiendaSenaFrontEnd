@@ -9,6 +9,7 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { formatNumber, formatNumberCOP } from '@/app/componentes/formatNumber';
+import Swal from "sweetalert2";
 
 
 export default function VistaFactura(){
@@ -35,8 +36,28 @@ export default function VistaFactura(){
         }
     };
     
-
-
+    const eliminar = async (nro: any) => {
+        try {
+            Swal.fire({
+                title: "¿Estás segur@ de que quieres eliminar esta factura?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Eliminar",
+                cancelButtonText: "Cancelar"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    axios.delete(`http://localhost:4000/api/invoice/${nro}`).then(() => {
+                        Swal.fire("Factura eliminada", "", "success").then(() => {
+                            location.reload();
+                        })
+                    })   
+                }
+            });
+        } catch (err) {
+            Swal.fire("No se pudo eliminar la factura", "", "error");
+        }
+    }
+        
     function formatDate(dateString: any) {
         const date = new Date(dateString);
         const year = date.getFullYear();
@@ -92,18 +113,23 @@ export default function VistaFactura(){
             </div>
             <div className="col-11 text-center my-3 container">
                 <div className="texto_menu mx-2 my-1 row table">
-                    <div className="col-3 mx-2 my-1">Fecha</div>
-                    <div className="col-4 mx-2 my-1">Nombre y apellido</div>
+                    <div className="col-2 mx-2 my-1">Fecha</div>
+                    <div className="col-3 mx-2 my-1">Nombre y apellido</div>
                     <div className="col-2 my-1">Total</div>
-                    <div className="col-2 mx-2 my-1">Ver factura</div>
+                    <div className="col-4 mx-2 my-1">Acciones</div>
                 </div>
                 {facturasList.map((val, key)=>{
                     return <>
                         <div className="row mx-2 my-3 ">
-                            <div className="col-3 mx-2 my-1 texto_drop">{formatDate(val.fecha)}</div>
-                            <div className="col-4 mx-2 my-1 texto_drop">{val.nombreConsumidor} {val.apellidoConsumidor}</div>
+                            <div className="col-2 mx-2 my-1 texto_drop">{formatDate(val.fecha)}</div>
+                            <div className="col-3 mx-2 my-1 texto_drop">{val.nombreConsumidor} {val.apellidoConsumidor}</div>
                             <div className="col-2 mx-2 my-1 texto_drop">{formatNumberCOP(val.total)}</div>
-                            <div className="col-2 mx-2 my-1 texto_drop"><a className={`${style.edit} w-100 text-center align-items-center p-1`} style={{ textDecoration: 'none' }} onClick={() => fetchFacturaProd(val.nro)}>Ver</a></div>
+                            <div className="col-4 mx-2 my-1 texto_drop d-flex flex-row">
+                                <a className={`${style.edit} w-50 mx-1 text-center align-items-center p-1`} style={{ textDecoration: 'none' }} onClick={() => fetchFacturaProd(val.nro)}>Ver</a>
+                                <button className={`${style.edit} w-50 mx-1 text-center align-items-center p-1`} onClick={() => eliminar(val.nro)} type="submit">
+                                    <a href="#" className={`${styles.text_form}`}>Eliminar</a>
+                                </button>
+                            </div>
                             <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)}/>
                         </div>
                         <hr />

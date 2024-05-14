@@ -28,7 +28,7 @@ export default function Utensilios() {
   const eliminar = (codigo: any) => {
     // Mostrar un diálogo de confirmación usando SweetAlert 2
     Swal.fire({
-        title: "¿Estás seguro de que quieres eliminar este utensilio?",
+        title: "¿Estás segur@ de que quieres eliminar este utensilio?",
         icon: "warning",
         showCancelButton: true,
         confirmButtonText: "Eliminar",
