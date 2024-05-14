@@ -7,15 +7,14 @@ import style from "@/app/admin/admin.module.css";
 import Swal from "sweetalert2";
 
 export default function editInsumos() {
-    const [producto, setProducto] = useState([{}])
+    const [producto, setProducto] = useState({})
     const router = useParams();
     const route = useRouter();
-    // console.log(router);
     const { id } = router
 
     useEffect(() => {
         axios.get(`http://localhost:4000/api/rawMaterial/${id}`,).then((response) => {
-            const product = response.data
+            const product = response.data[0]
             setProducto(product)
             console.log(producto)
             console.log(product)
@@ -59,7 +58,7 @@ export default function editInsumos() {
             <div className="row justify-content-center">
                 <img
                     className={`${style.img_invent} col-3`}
-                    src={producto[0].imagen}
+                    src={producto.imagen}
                     alt=""
                 ></img>
             </div>

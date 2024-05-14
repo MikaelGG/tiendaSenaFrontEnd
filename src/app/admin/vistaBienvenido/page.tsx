@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import styles from "../admin.module.css";
 import axios from "axios";
+import {formatNumberCOP, formatNumber } from '@/app/componentes/formatNumber';
 
 export default function InicioA() {
   const [countUsers, setCountUsers] = useState([]);
@@ -10,10 +11,10 @@ export default function InicioA() {
   const [vencimientoList, setVencimiento] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:4000/api/expiration",).then((response) => {
-            setVencimiento(response.data);
-            console.log(response.data)
-        });
+      axios.get("http://localhost:4000/api/expiration",).then((response) => {
+        setVencimiento(response.data);
+        console.log(response.data)
+      });
     }, [])
 
 
@@ -57,18 +58,18 @@ export default function InicioA() {
       </div>
       <div className="container  justify-content-center">
         <div className="row">
-          <div className={`${styles.list} col-4 ms-4`}></div>
-          <div className={`${styles.list} col-4 ms-3`}></div>
           <div className={`${styles.list} col-3 ms-3`}></div>
+          <div className={`${styles.list} col-4 ms-3`}></div>
+          <div className={`${styles.list} col-4 ms-4`}></div>
         </div>
         <div className="row">
-          <div className={`${styles.list_data} col-4 ms-4`}>
-            <div className="row mt-2 fs-3 mx-5 col-9">
+          <div className={`${styles.list_data} col-3 ms-3`}>
+            <div className="row mt-2 fs-3 mx-1 col-9">
               <h3><b>Usuarios registrados:</b></h3> 
             </div>
             <div className={`${styles.img_inicio} row `}>
-              <b className={`${styles.usuarios_registrados} fs-1 col-5`}>{countUsers}</b>
-              <img className="col-4" src="/User_Circle.svg" alt=""></img>
+              <b className={`${styles.usuarios_registrados} fs-1 col-5`}>{formatNumber(countUsers)}</b>
+              <img className="col-5" src="/User_Circle.svg" alt=""></img>
             </div>
           </div>
           <div className={`${styles.list_data} col-4 ms-3`}>
@@ -76,23 +77,23 @@ export default function InicioA() {
             <h3><b>Facturas registradas:</b></h3> 
             </div>
             <div className={`${styles.img_inicio} row `}>
-              <b className={`${styles.facturas_registradas} fs-1 col-5`}>{countFactura}</b>
+              <b className={`${styles.facturas_registradas} fs-1 col-5`}>{formatNumber(countFactura)}</b>
               <img className="col-4" src="/factura.svg" alt=""></img>
             </div>
           </div>
-          <div className={`${styles.list_data} col-3 ms-3`}>
+          <div className={`${styles.list_data} col-4 ms-4`}>
             <div className="row mt-3 fs-3 mx-5 col-3">
             <h3><b>Total: </b></h3> 
             </div>      
             <div className={`${styles.img_inicio} row`}>
-              <b className={`${styles.total_bienvenidos} fs-2 col-5`}>{total()}</b>
-              <img className="col-6" src="/total.svg" alt=""></img>
+              <b className={`${styles.total_bienvenidos} fs-2 col-5`}>{formatNumberCOP(total())}</b>
+              <img className="col-5" src="/total.svg" alt=""></img>
             </div>
           </div>
         </div>
         <div className="col-8 text-center my-3 container">
           <div className={`${styles.subtit} row mt-4 ms-3`}>
-            Proximos a vencer
+            Próximos a vencer
           </div>
           <div className="texto_menu mx-2 my-1 row table">
             <div className="col-3">ID</div>
@@ -110,6 +111,7 @@ export default function InicioA() {
                   <div className="col-3 my-4">{val.nombre}</div>
                   <div className="col-3 my-4">{formatDate(val.f_vencimiento)}</div>
               </div>
+              <hr />
             </>})
           }
         </div>

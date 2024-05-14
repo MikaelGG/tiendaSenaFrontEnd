@@ -8,6 +8,8 @@ import Link from 'next/link';
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { formatNumber, formatNumberCOP } from '@/app/componentes/formatNumber';
+
 
 export default function VistaFactura(){
 
@@ -63,16 +65,16 @@ export default function VistaFactura(){
                             return <>
                                 <div className="row mx-2 my-3 ">
                                     <div className="col-3 mx-2 my-1 texto_drop">{val.nombreProducto}</div>
-                                    <div className="col-3 mx-2 my-1 texto_drop">{val.precioU}</div>
-                                    <div className="col-2 mx-2 my-1 texto_drop">{val.cantidad}</div>
-                                    <div className="col-2 mx-2 my-1 texto_drop">{val.subTotal}</div>
+                                    <div className="col-3 mx-2 my-1 texto_drop">{formatNumberCOP(val.precioU)}</div>
+                                    <div className="col-2 mx-2 my-1 texto_drop">{formatNumber(val.cantidad)}</div>
+                                    <div className="col-2 mx-3 my-1 texto_drop">{formatNumberCOP(val.subTotal)}</div>
                                 </div>
                             </>})
                         }
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={props.onHide} className={`${style.edit} w-100 text-center align-items-center p-1`} style={{ textDecoration: 'none' }}>Volver</Button>
+                    <Button onClick={props.onHide} className={`${style.bmodal} col-2 align-items-center p-1`} style={{ textDecoration: 'none' }}>Volver</Button>
                 </Modal.Footer>
             </Modal>
         );
@@ -80,7 +82,7 @@ export default function VistaFactura(){
 
     return(<>
         <div className="row my-4">
-            <div className="text_nav text-center"><a className="tittle">facturas</a></div>
+            <div className="text_nav text-center"><a className="tittle">Facturas</a></div>
         </div>
         <div className="row text-center justify-content-center">
             <div className="col-6">
@@ -100,10 +102,11 @@ export default function VistaFactura(){
                         <div className="row mx-2 my-3 ">
                             <div className="col-3 mx-2 my-1 texto_drop">{formatDate(val.fecha)}</div>
                             <div className="col-4 mx-2 my-1 texto_drop">{val.nombreConsumidor} {val.apellidoConsumidor}</div>
-                            <div className="col-2 mx-2 my-1 texto_drop">{val.total}</div>
+                            <div className="col-2 mx-2 my-1 texto_drop">{formatNumberCOP(val.total)}</div>
                             <div className="col-2 mx-2 my-1 texto_drop"><a className={`${style.edit} w-100 text-center align-items-center p-1`} style={{ textDecoration: 'none' }} onClick={() => fetchFacturaProd(val.nro)}>Ver</a></div>
                             <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)}/>
                         </div>
+                        <hr />
                     </>})
                 }
             </div>

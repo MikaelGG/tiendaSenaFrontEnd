@@ -69,7 +69,7 @@ export default function PageFactura() {
             consumidor: consumidor
         }).then(res => {
             addProduct(res.data);
-            Swal.fire("Factura registrada con exito", "", "success").then(() => {
+            Swal.fire("Factura registrada con éxito", "", "success").then(() => {
                 router.push("/admin/vistaFactura");
             });
         }).catch(error => {

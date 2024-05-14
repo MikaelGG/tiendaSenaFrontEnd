@@ -8,14 +8,14 @@ import Swal from "sweetalert2";
 
 
 export default function editUtensilios(){
-    const [producto, setProducto] = useState([{}]);
+    const [producto, setProducto] = useState({});
     const router = useParams();
     const route = useRouter();
     const { id } = router;
 
     useEffect(() => {
         axios.get(`http://localhost:4000/api/utensil/${id}`).then((response) => {
-            const product = response.data;
+            const product = response.data[0]
             setProducto(product);
             console.log(producto)
         }).catch(error => {
@@ -50,7 +50,7 @@ export default function editUtensilios(){
                 <div className="text_nav text-center"><a className="tittle">Editar Utensilio</a></div>
             </div>
             <div className="row justify-content-center">
-                <img className={`${style.img_invent} col-3`} src={producto[0].imagen} alt=""/>
+                <img className={`${style.img_invent} col-3`} src={producto.imagen} alt=""/>
             </div>
             <div className="row my-3 justify-content-center">
                 <form className="form col-5 py-4" onSubmit={handleSubmit}>

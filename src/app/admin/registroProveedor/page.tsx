@@ -16,7 +16,7 @@ export default function RegistroProveedor(){
         if (nombre.trim() === '' || nombre.length < 3) {
             Swal.fire("Completa correctamente el nombre.", "", "error")
             return;           
-        }else if (nit.toString().length !== 10) {
+        }else if (nit.toString().length < 16) {
             Swal.fire("Completa correctamente el NIT/Documento", "", "error")
             return;
         } else if (apellido.trim() === "" || apellido.length < 3) {
@@ -25,7 +25,7 @@ export default function RegistroProveedor(){
         } else if (!direccion){
             Swal.fire("Completa correctamente la dirección", "", "error")
             return;
-        } else if (telefono.length !== 10){
+        } else if (telefono.length > 8){
             Swal.fire("Completa correctamente el teléfono", "", "error")
             return;
         } 
@@ -54,9 +54,9 @@ export default function RegistroProveedor(){
             <input onChange={(event) => { setNombre(event.target.value); }}type="text" className="col-7 m-2 input_form" ></input>
             <label className="texto_menu col-4">Apellidos</label>
             <input onChange={(event) => { setApellido(event.target.value); }}type="text" className="col-7 m-2 input_form" ></input>
-            <label className="texto_menu col-4">Direccion</label>
+            <label className="texto_menu col-4">Dirección</label>
             <input onChange={(event) => { setDireccion(event.target.value); }}type="text" className="col-7 m-2 input_form" ></input>
-            <label className="texto_menu col-4">Telefono</label>
+            <label className="texto_menu col-4">Teléfono</label>
             <input onChange={(event) => { setTelefono(event.target.value); }}type="number" className="col-7 m-2 input_form" ></input>
             <div className="row text-center my-3">
             <div className=""onClick={add}><Registrar/></div><br></br>

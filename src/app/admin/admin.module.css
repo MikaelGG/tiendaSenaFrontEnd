@@ -57,6 +57,15 @@
     border-radius: 14px;
     border: 0;
 }
+.bmodal{
+    color: white;
+    background-color: #CC3366;
+    margin: auto;
+    opacity: 80%;
+    box-shadow: 2px 3px rgba(0, 0, 0, 0.466);
+    border-radius: 14px;
+    border: 0;
+}
 .carta{
     background-color:#6633003f;
     border-radius: 8px;
@@ -80,10 +89,14 @@
 .total_bienvenidos{
     display: flex;
     align-items: center;
-    margin-right: 20px;
+    margin-right: 40px;
 }
 .ingresos_egresos{
     display: flex;
     align-items: center;
+}
+.botonCafe{
+    background-color: #663300;
+    color: white;
 }
 

@@ -11,8 +11,7 @@ export default function RegistroCarta(){
     const [nombre, setNombre] = useState("");
     const [descripcion, setDescripcion] = useState("");
     const [precio, setPrecio] = useState(0);
-    const [cantidad, setCantidad] = useState(0);
-    console.log(imagen);
+    const [tipo, setTipo] = useState("");
     
     const add = ()=>{
         if (nombre.trim() === '' || nombre.length < 3) {
@@ -21,14 +20,14 @@ export default function RegistroCarta(){
         }else if (!imagen) {
             Swal.fire("Completa correctamente la url", "", "error")
             return;
-        } else if (descripcion.length < 20) {
-            Swal.fire("Completa correctamente la descripción. Minimo 20 carácteres", "", "error")
+        } else if (descripcion.length < 205) {
+            Swal.fire("Completa correctamente la descripción", "", "error")
             return;
         } else if (!precio){
             Swal.fire("Completa correctamente el precio", "", "error")
             return;
-        } else if (!cantidad){
-            Swal.fire("Completa correctamente la cantidad", "", "error")
+        } else if (!tipo ){
+            Swal.fire("Completa correctamente el tipo de producto", "", "error")
             return;
         } 
         axios.post("http://localhost:4000/api/products",{
@@ -36,7 +35,7 @@ export default function RegistroCarta(){
             nombre:nombre,
             descripcion:descripcion,
             precio:precio,
-            cantidad:cantidad,
+            tipo:tipo
         }).then(()=>{
             Swal.fire("Producto registrado", "", "success").then(() => {
                 router.push("/admin/vistaProductos");
@@ -54,11 +53,16 @@ export default function RegistroCarta(){
             <label className="texto_menu col-4">Nombre</label>
             <input  onChange={(event) => { setNombre(event.target.value); }} value={nombre} type="text" className="col-7 m-2 input_form" ></input>
             <label className="texto_menu col-4">Descripción</label>
-            <input  onChange={(event) => { setDescripcion(event.target.value); }} value={descripcion} type="textarea" className="col-7 m-2 input_form" ></input>
+            <textarea cols="30" rows="5" onChange={(event) => { setDescripcion(event.target.value); }} value={descripcion} type="textarea" className="col-7 m-2 input_form"></textarea>
             <label className="texto_menu col-4">Precio</label>
             <input onChange={(event) => { setPrecio(parseInt(event.target.value)); }} value={precio} type="number" className="col-7 m-2 input_form" ></input>
-            <label className="texto_menu col-4">Cantidad</label>
-            <input onChange={(event) => { setCantidad(parseInt(event.target.value)); }} value={cantidad} type="number" className="col-7 m-2 input_form" ></input>
+            <label className="texto_menu col-4">Tipo</label>
+            <select name="type" className="col-7 m-2 input_form" onChange={(event) => { setTipo(event.target.value) }}>
+                <option>Tipo de producto</option>
+                <option value="cafes">Cafés</option>
+                <option value="panaderia">Panadería</option>
+                <option value="cocteleria">Coctelería</option>
+            </select>    
             <div className="row text-center my-3">
             <div className=""onClick={add}><Registrar/></div><br></br>
         </div>

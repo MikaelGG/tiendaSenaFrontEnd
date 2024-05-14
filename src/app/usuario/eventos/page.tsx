@@ -20,6 +20,8 @@ const Eventos = () => {
     });
   }, []);
 
+  
+
   function formatDate(dateString: any) {
     const date = new Date(dateString);
     const year = date.getFullYear();
@@ -27,6 +29,8 @@ const Eventos = () => {
     const day = date.getDate().toString().padStart(2, "0");
     return `${year}-${month}-${day}`;
   }
+
+  
 
   return (
     <>
@@ -40,12 +44,12 @@ const Eventos = () => {
         </div>
         {eventosList.map((val, key) => {
           return (<>
-            <article className={`${event.postcard} ${event.light} ${event.blue} ${event.text_nav} `}>
+            <article className={`${event.postcard} ${event.light} ${event.blue} `}>
                 <a className={`${event.postcard__img_link} `}>
                     <img className={`${event.postcard__img}`} src={val.imagen} alt="Image Title" />
                 </a>
                 <div className={`${event.postcard__text} ${event.tdark}`}>
-                    <h1 className={`${event.postcard__title}  ${event.blue}`}>{val.titulo}</h1>
+                    <h1 className={`${event.postcard__title}  ${event.blue} ${event.text_nav} `}>{val.titulo}</h1>
                     <div className={`${event.postcard__bar}`}></div>
                     <div className={`${event.postcard__previewtxt}`}>{val.descripcion}</div>
                     <ul className={`${event.postcard__tagbox}`}>

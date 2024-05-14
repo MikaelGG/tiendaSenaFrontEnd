@@ -4,7 +4,7 @@ import styles from "../usuario.module.css"
 const navU = [
     {name: "Inicio", url: "../usuario/inicio", id: 1},
     {name: "Eventos", url: "../usuario/eventos", id: 2},
-    {name: "Menú", url: "../usuario/carta", id: 3},
+    {name: "Carta", url: "../usuario/carta", id: 3},
     {name: "Iniciar sesión", url: "../usuario/sesion", id: 4},
 ];
 export default function NavUsuario({name}:{name:string}){

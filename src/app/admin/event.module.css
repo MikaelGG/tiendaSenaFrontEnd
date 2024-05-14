@@ -4,7 +4,7 @@
 .text_nav {
 	font-family: 'Great Vibes', cursive;
 	font-size: 20px;
-	color: #ffffff;
+	color: #000000;
 	text-rendering: optimizeLegibility;
 	font-weight: initial;
 }
@@ -34,13 +34,14 @@
 .postcard {
   flex-wrap: wrap;
   display: flex;
-  
+  max-width: 85%;
   box-shadow: 0 4px 21px -12px rgba(0, 0, 0, 0.66);
   border-radius: 10px;
-  margin: 0 0 2rem 0;
+  margin: 0 auto;
   overflow: hidden;
   position: relative;
   color: #ffffff;
+  margin-bottom: 50px;
 
 	&.dark {
 		background-color: #000000;
@@ -53,11 +54,11 @@
 		color: #000000;
 	}
 	
-    .a {
-      color: inherit;
-    }
+  .a {
+    color: inherit;
+  }
 
-    .h1 h1,
+  .h1 h1,
 	.h1, .h1 {
 		margin-bottom: 0.5rem;
 		font-weight: 500;

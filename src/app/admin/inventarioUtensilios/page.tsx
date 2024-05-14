@@ -5,6 +5,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Swal from "sweetalert2";
+import { formatNumber } from '@/app/componentes/formatNumber';
 
 export default function Utensilios() {
   interface Utensilio {
@@ -65,14 +66,14 @@ export default function Utensilios() {
               <img className={`${style.img_invent} w-100`} src={val.imagen} alt="" />
             </div>
             <div className="col-sm-12 col-md-8 col-lg-6">
-              <span className={`${style.tittle_small}`}>Codigo: </span>
+              <span className={`${style.tittle_small}`}>Código: </span>
               <span className={`${style.venc_txt}`}>{val.codigo}</span>
               <br />
               <span className={`${style.tittle_small}`}>Nombre: </span>
               <span className={`${style.venc_txt}`}>{val.nombre}</span>
               <br />
               <span className={`${style.tittle_small}`}>Cantidad disponible: </span>
-              <span className={`${style.venc_txt}`}>{val.cantidad}</span>
+              <span className={`${style.venc_txt}`}>{formatNumber(val.cantidad)}</span>
               <br />
             </div>
             <div className="col-sm-6 col-md-4 col-lg-3">

@@ -85,11 +85,11 @@ export default function RegEvento(){
                     <input onChange={(event) => { setHora_inicio(event.target.value); }} type="text" className="col-4 m-2 input_form"></input>
                     <select
                         onChange={(event) => { setAmPmInicio(event.target.value) }} className="col-2 m-2 input_form">
-                        <option>Periodo</option>
+                        <option>Jornada</option>
                         <option value="AM">AM</option>
                         <option value="PM">PM</option>
                     </select>
-                    <label className="texto_menu col-4">Hora de fin</label>
+                    <label className="texto_menu col-4">Hora de finalización</label>
                     <input onChange={(event) => { setHora_fin(event.target.value) }} type="text" className="col-4 m-2 input_form"></input>
                     <select
                         onChange={(event) => { setAmPmFin(event.target.value) }} className="col-2 m-2 input_form">
@@ -99,10 +99,10 @@ export default function RegEvento(){
                     </select>
                     <label className="texto_menu col-4">Imagen del evento</label>
                     <input onChange={(event) => { setImagen(event.target.value); }}type="text" className="col-7 m-2 input_form"></input>
-                    <label className="texto_menu col-4">Descripción del Menú</label>
-                    <input onChange={(event) => { setDescripcion(event.target.value); }}type="textarea" className="col-7 m-2 input_form"></input>
                     <label className="texto_menu col-4">Cupos disponibles</label>
                     <input onChange={(event) => { setCupo(parseInt(event.target.value)); }}type="number" className="col-7 m-2 input_form"></input> 
+                    <label className="texto_menu col-4">Descripción del <br /> evento</label>
+                    <textarea cols="30" rows="5" onChange={(event) => { setDescripcion(event.target.value); }} type="textarea" className="col-7 m-2 input_form"></textarea>
                     <div className="text-center my-3" onClick={add}><Registrar/></div>
                 </form>
             </div>

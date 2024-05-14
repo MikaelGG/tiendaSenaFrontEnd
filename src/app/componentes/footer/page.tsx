@@ -9,7 +9,7 @@ function getComponentByRoute() {
             <div className={`${styles.footer_height} container-fluid foot d-flex flex-column justify-content-between`}>
                 <div className= {`${styles.footer_height} ${styles.padding_left} row`}>
                     <div className={`${styles.footer_height} col-5`}>
-                        <img src="/lemaSaboreaElAprendizaje.svg" alt="" className="col-6 my-1"></img>
+                        <img src="/lemaSaboreaElAprendizaje.svg" alt="" className="col-5 my-1"></img>
                     </div>
                     <div className={`${styles.footer_height}  col-6 sena_footer mx-5 d-flex align-items-center`}>
 

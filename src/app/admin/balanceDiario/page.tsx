@@ -4,6 +4,8 @@ import style from "../../usuario/usuario.module.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { isTemplateExpression } from "typescript";
+import { formatNumber, formatNumberCOP } from '@/app/componentes/formatNumber';
+
 
 export default function BalanceDiario() {
   const [diarioList, setDiario] = useState([]);
@@ -66,8 +68,9 @@ export default function BalanceDiario() {
             <div className="row my-1 texto_drop my-3">
               <div className="col-4 mb-3">{formatDate(val.fecha)}</div>
               <div className="col-4 mb-3">{val.nombreConsumidor} {val.apellidoConsumidor}</div>
-              <div className="col-4 mb-3">{val.total}</div>
+              <div className="col-4 mb-3">{formatNumberCOP(val.total)}</div>
             </div>
+            <hr />
           </>
         })}
       </div>
@@ -83,7 +86,7 @@ export default function BalanceDiario() {
                 <h2><b> Ingresos: </b></h2> 
               </div>
             <div className={`${styles.img_inicio} row `}>
-              <b className={`${styles.ingresos_egresos} fs-1 mx-5 col-5`}> {ingresosList}</b>
+              <b className={`${styles.ingresos_egresos} fs-1 mx-5 col-5`}> {formatNumberCOP(ingresosList)}</b>
               <img className="col-4 " src="/incremento.svg" alt=""></img>
             </div>
           </div>
@@ -92,7 +95,7 @@ export default function BalanceDiario() {
               <h2><b> Egresos: </b></h2> 
             </div>
             <div className={`${styles.img_inicio} row `}>
-              <b className={`${styles.ingresos_egresos} fs-1 mx-5 col-5`}>{egresosList}</b>
+              <b className={`${styles.ingresos_egresos} fs-1 mx-5 col-5`}>{formatNumberCOP(egresosList)}</b>
               <img className="col-3 pt-4 mx-4 mt-3" src="/decremento.svg" alt=""></img>
             </div>
           </div>
