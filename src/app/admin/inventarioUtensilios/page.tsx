@@ -61,7 +61,7 @@ export default function Utensilios() {
     <div className="container">
       {utensiliosList.map((val, key) => {
         return <>
-          <div className="row my-2">
+          <div className="row my-2" key={key}>
             <div className="col-sm-6 col-md-4 col-lg-2">
               <img className={`${style.img_invent} w-100`} src={val.imagen} alt="" />
             </div>

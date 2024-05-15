@@ -84,11 +84,11 @@ export default function VistaFactura(){
                         </div>
                         {facturasProdList.map((val,key)=>{
                             return <>
-                                <div className="row mx-2 my-3 ">
-                                    <div className="col-3 mx-2 my-1 texto_drop">{val.nombreProducto}</div>
-                                    <div className="col-3 mx-2 my-1 texto_drop">{formatNumberCOP(val.precioU)}</div>
-                                    <div className="col-2 mx-2 my-1 texto_drop">{formatNumber(val.cantidad)}</div>
-                                    <div className="col-2 mx-3 my-1 texto_drop">{formatNumberCOP(val.subTotal)}</div>
+                                <div className="row mx-2 my-3 " key={key}>
+                                    <div className="col-3 mx-2 my-1 texto_drop">{(val as any).nombreProducto}</div>
+                                    <div className="col-3 mx-2 my-1 texto_drop">{formatNumberCOP((val as any).precioU)}</div>
+                                    <div className="col-2 mx-2 my-1 texto_drop">{formatNumber((val as any).cantidad)}</div>
+                                    <div className="col-2 mx-3 my-1 texto_drop">{formatNumberCOP((val as any).subTotal)}</div>
                                 </div>
                             </>})
                         }
@@ -120,13 +120,13 @@ export default function VistaFactura(){
                 </div>
                 {facturasList.map((val, key)=>{
                     return <>
-                        <div className="row mx-2 my-3 ">
-                            <div className="col-2 mx-2 my-1 texto_drop">{formatDate(val.fecha)}</div>
-                            <div className="col-3 mx-2 my-1 texto_drop">{val.nombreConsumidor} {val.apellidoConsumidor}</div>
-                            <div className="col-2 mx-2 my-1 texto_drop">{formatNumberCOP(val.total)}</div>
+                        <div className="row mx-2 my-3 " key={key}>
+                            <div className="col-2 mx-2 my-1 texto_drop">{formatDate((val as any).fecha)}</div>
+                            <div className="col-3 mx-2 my-1 texto_drop">{(val as any).nombreConsumidor} {(val as any).apellidoConsumidor}</div>
+                            <div className="col-2 mx-2 my-1 texto_drop">{formatNumberCOP((val as any).total)}</div>
                             <div className="col-4 mx-2 my-1 texto_drop d-flex flex-row">
-                                <a className={`${style.edit} w-50 mx-1 text-center align-items-center p-1`} style={{ textDecoration: 'none' }} onClick={() => fetchFacturaProd(val.nro)}>Ver</a>
-                                <button className={`${style.edit} w-50 mx-1 text-center align-items-center p-1`} onClick={() => eliminar(val.nro)} type="submit">
+                                <a className={`${style.edit} w-50 mx-1 text-center align-items-center p-1`} style={{ textDecoration: 'none' }} onClick={() => fetchFacturaProd((val as any).nro)}>Ver</a>
+                                <button className={`${style.edit} w-50 mx-1 text-center align-items-center p-1`} onClick={() => eliminar((val as any).nro)} type="submit">
                                     <a href="#" className={`${styles.text_form}`}>Eliminar</a>
                                 </button>
                             </div>

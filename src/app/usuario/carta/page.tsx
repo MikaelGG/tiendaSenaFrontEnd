@@ -25,13 +25,13 @@ export default function Menu() {
   }, []);
 
   const setInitialState = (data: any) => {
-    const cafesProducts = data.filter(product => product.tipo === 'cafes');
+    const cafesProducts = data.filter((product: any) => product.tipo === 'cafes');
     setFilteredProducts(cafesProducts);
     setBotonSeleccionado('cafes');
   };  
 
   const filterProducts = (tipo: any) => {
-    const filtered = carta.filter(product => product.tipo === tipo);
+    const filtered = carta.filter(product => (product as any).tipo === tipo);
     setFilteredProducts(filtered);
     setBotonSeleccionado(tipo);
   }
@@ -51,27 +51,27 @@ export default function Menu() {
         </div>
         <div className="row pt-2 mx-3 justify-content-center m-2">
             {filteredProducts.map((producto, index) => (
-              <div className={`card ${style.carta} mx-5 my-5`} style={{ width: '22rem' }}>
+              <div className={`card ${style.carta} mx-5 my-5`} style={{ width: '22rem' }} key={index}>
                 <div className="card-body">
-                  <h5 className="card-title text-center fs-3 fw-bold mb-4">{producto.nombre}</h5>
+                  <h5 className="card-title text-center fs-3 fw-bold mb-4">{(producto as any).nombre}</h5>
                   <div className="d-flex justify-content-center mb-4">
                     <img
-                      src={producto.imagen}
+                      src={(producto as any).imagen}
                       className="card-img-top"
-                      alt={producto.nombre}
+                      alt={(producto as any).nombre}
                       style={{ maxWidth: '300px', maxHeight: '300px' }}
                     />
                   </div>
-                  <p className="card-text text-center fs-6 mb-4">{producto.descripcion}</p>
+                  <p className="card-text text-center fs-6 mb-4">{(producto as any).descripcion}</p>
                   <div className="d-flex justify-content-center align-items-center mb-4">
                     <span className="me-2 fw-bold fs-3">Precio:</span>
-                    <span className="fs-3">{formatNumberCOP(producto.precio)}</span>
+                    <span className="fs-3">{formatNumberCOP((producto as any).precio)}</span>
                   </div>
                 </div>
               </div>
             ))}
-          </div>
         </div>
+      </div>
     </>
   );
 }

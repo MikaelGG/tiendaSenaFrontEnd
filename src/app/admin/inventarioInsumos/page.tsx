@@ -63,38 +63,38 @@ export default function Insumos() {
     <div className="container justify-content-center">
       {insumosList.map((val, key) => {
         return <>
-          <div className="row my-2">
+          <div className="row my-2" key={key}>
             <div className="col-sm-6 col-md-4 col-lg-2">
-              <img className={`${style.img_invent} w-100`} src={val.imagen} alt="" />
+              <img className={`${style.img_invent} w-100`} src={(val as any).imagen} alt="" />
             </div>
             <div className="col-sm-12 col-md-8 col-lg-6">
               <span className={`${style.tittle_small}`}>Código: </span>
-              <span className={`${style.venc_txt}`}>{val.codigo}</span>
+              <span className={`${style.venc_txt}`}>{(val as any).codigo}</span>
               <br />
               <span className={`${style.tittle_small}`}>Nombre: </span>
-              <span className={`${style.venc_txt}`}>{val.nombre}</span>
+              <span className={`${style.venc_txt}`}>{(val as any).nombre}</span>
               <br />
               <span className={`${style.tittle_small}`}>Fecha de Ingreso: </span>
-              <span className={`${style.venc_txt}`}>{formatDate(val.f_ingreso)}</span>
+              <span className={`${style.venc_txt}`}>{formatDate((val as any).f_ingreso)}</span>
               <br />
               <span className={`${style.tittle_small}`}>Fecha de Vencimiento: </span>
-              <span className={`${style.venc_txt}`}>{formatDate(val.f_vencimiento)}</span>
+              <span className={`${style.venc_txt}`}>{formatDate((val as any).f_vencimiento)}</span>
               <br />
               <span className={`${style.tittle_small}`}>Cantidad: </span>
-              <span className={`${style.venc_txt}`}>{formatNumber(val.cantidad)}</span>
+              <span className={`${style.venc_txt}`}>{formatNumber((val as any).cantidad)}</span>
               <br />
               <span className={`${style.tittle_small}`}>Costo: </span>
-              <span className={`${style.venc_txt}`}>{formatNumberCOP(val.costo)}</span>
+              <span className={`${style.venc_txt}`}>{formatNumberCOP((val as any).costo)}</span>
               <br />
             </div>
             <div className="col-sm-6 col-md-4 col-lg-3">
-              <Link href={`/admin/inventarioInsumos/${val.codigo}`} className={`${styles.text_form}`}>
+              <Link href={`/admin/inventarioInsumos/${(val as any).codigo}`} className={`${styles.text_form}`}>
                 <button className={`${style.edit} w-100 my-2 text-center align-items-center p-1 `}
                   type="submit">Editar</button>
               </Link>
               <br />
               <button className={`${style.edit} w-100 my-2 text-center align-items-center p-1 `} onClick={() => {
-                eliminar(val.codigo);
+                eliminar((val as any).codigo);
               }} type="submit">
                 <a href="#" className={`${styles.text_form}`}>Dar de baja</a>
               </button>

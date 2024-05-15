@@ -16,7 +16,7 @@ export default function RegEvento(){
     const [amPmFin, setAmPmFin] = useState("");
     const [titulo, setTitulo] = useState("");
     const [imagen, setImagen] = useState("");
-    const [descripcion, setDescripcion] = useState("");
+    const [descripcion, setDescripcion] = useState<string>('');
     const [cupo, setCupo] = useState(0);
     const [fecha, setFecha] = useState(Date);
 
@@ -98,16 +98,17 @@ export default function RegEvento(){
                         <option value="PM">PM</option>
                     </select>
                     <label className="texto_menu col-4">Imagen del evento</label>
-                    <input onChange={(event) => { setImagen(event.target.value); }}type="text" className="col-7 m-2 input_form"></input>
+                    <input onChange={(event) => { setImagen(event.target.value); }} type="text" className="col-7 m-2 input_form"></input>
                     <label className="texto_menu col-4">Cupos disponibles</label>
-                    <input onChange={(event) => { setCupo(parseInt(event.target.value)); }}type="number" className="col-7 m-2 input_form"></input> 
-                    <div className="d-flex align-items-start ">
+                    <input onChange={(event) => { setCupo(parseInt(event.target.value)); }} type="number" className="col-7 m-2 input_form"></input>
+                    <div className="d-flex align-items-start ">                   
                         <label className="texto_menu col-4 mt-2">Descripción del <br /> evento</label>
-                        <textarea cols="30" rows="5" onChange={(event) => { setDescripcion(event.target.value); }} type="textarea" className="col-7 m-2 input_form"></textarea>
+                        <textarea onChange={(event) => { setDescripcion(event.target.value); }} className="col-7 m-2 input_form" style={{width: "60%", minHeight:"100px"  }}/>
                     </div>
                     <div className="text-center my-3" onClick={add}><Registrar/></div>
                 </form>
             </div>
         </div>
+    
     </>)
 }

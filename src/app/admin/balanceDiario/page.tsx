@@ -3,6 +3,7 @@ import styles from "../admin.module.css";
 import style from "../../usuario/usuario.module.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Image from "next/image";
 import { isTemplateExpression } from "typescript";
 import { formatNumber, formatNumberCOP } from '@/app/componentes/formatNumber';
 
@@ -65,10 +66,10 @@ export default function BalanceDiario() {
         </div>
         {diarioList.map((val, key) => {
           return <>
-            <div className="row my-1 texto_drop my-3">
-              <div className="col-4 mb-3">{formatDate(val.fecha)}</div>
-              <div className="col-4 mb-3">{val.nombreConsumidor} {val.apellidoConsumidor}</div>
-              <div className="col-4 mb-3">{formatNumberCOP(val.total)}</div>
+            <div className="row my-1 texto\_drop my-3" key={key}>
+              <div className="col-4 mb-3">{formatDate((val as any).fecha)}</div>
+              <div className="col-4 mb-3">{(val as any).nombreConsumidor} {(val as any).apellidoConsumidor}</div>
+              <div className="col-4 mb-3">{formatNumberCOP((val as any).total)}</div>
             </div>
             <hr />
           </>
@@ -87,7 +88,7 @@ export default function BalanceDiario() {
               </div>
             <div className={`${styles.img_inicio} row `}>
               <b className={`${styles.ingresos_egresos} fs-1 mx-5 col-5`}> {formatNumberCOP(ingresosList)}</b>
-              <img className="col-4 " src="/incremento.svg" alt=""></img>
+              <img className="col-4 " src="/incremento.svg" alt=""/>
             </div>
           </div>
           <div className={`${styles.list_data} col-5 ms-4`}>
@@ -96,7 +97,7 @@ export default function BalanceDiario() {
             </div>
             <div className={`${styles.img_inicio} row `}>
               <b className={`${styles.ingresos_egresos} fs-1 mx-5 col-5`}>{formatNumberCOP(egresosList)}</b>
-              <img className="col-3 pt-4 mx-4 mt-3" src="/decremento.svg" alt=""></img>
+              <img className="col-3 pt-4 mx-4 mt-3" src="/decremento.svg" alt="" />
             </div>
           </div>
         </div>

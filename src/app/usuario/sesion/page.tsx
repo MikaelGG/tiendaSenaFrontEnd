@@ -14,7 +14,7 @@ const backgroundStyles: React.CSSProperties = {
 };
 export default function PageInicio() {
     const [user, setUser] = useState("")
-    const [password, setPassword] = useState("")
+    const [password, setPassword] = useState(0)
     const router = useRouter()
     const handleSubmit = async () => {
         try {

@@ -5,8 +5,8 @@ import axios from "axios";
 import {formatNumberCOP, formatNumber } from '@/app/componentes/formatNumber';
 
 export default function InicioA() {
-  const [countUsers, setCountUsers] = useState([]);
-  const [countFactura, setCountFactura] = useState([]);
+  const [countUsers, setCountUsers] = useState(0);
+  const [countFactura, setCountFactura] = useState(0);
   const [totalFactura, setTotal] = useState([]);
   const [vencimientoList, setVencimiento] = useState([]);
 
@@ -34,7 +34,7 @@ export default function InicioA() {
   const total = () => {
     let countFac = 0;
     totalFactura.map((val) => {
-      countFac = val.total + countFac;
+      countFac = (val as any).total + countFac;
     });
     return countFac;
   };
@@ -103,13 +103,13 @@ export default function InicioA() {
           </div>
           {vencimientoList.map((val, key) => {
             return <>
-                <div className="row mx-2 my-1 texto_drop">
-                  <div className="col-3 my-4">{val.codigo}</div>
+                <div className="row mx-2 my-1 texto_drop" key={key}>
+                  <div className="col-3 my-4">{(val as any).codigo}</div>
                   <div className="col-3">
-                    <img className={`${styles.img_invent}`} style={{ width: '100px', height: '100px'}} src={val.imagen} alt="" />
+                    <img className={`${styles.img_invent}`} style={{ width: '100px', height: '100px'}} src={(val as any).imagen} alt="" />
                   </div>
-                  <div className="col-3 my-4">{val.nombre}</div>
-                  <div className="col-3 my-4">{formatDate(val.f_vencimiento)}</div>
+                  <div className="col-3 my-4">{(val as any).nombre}</div>
+                  <div className="col-3 my-4">{formatDate((val as any).f_vencimiento)}</div>
               </div>
               <hr />
             </>})

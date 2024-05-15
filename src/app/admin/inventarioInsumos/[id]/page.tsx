@@ -6,7 +6,7 @@ import Registrar from "@/app/componentes/botones/registrar";
 import style from "@/app/admin/admin.module.css";
 import Swal from "sweetalert2";
 
-export default function editInsumos() {
+function EditInsumos() {
     const [producto, setProducto] = useState({})
     const router = useParams();
     const route = useRouter();
@@ -63,24 +63,24 @@ export default function editInsumos() {
             <div className="row justify-content-center">
                 <img
                     className={`${style.img_invent} col-3`}
-                    src={producto.imagen}
+                    src={(producto as any).imagen}
                     alt=""
                 ></img>
             </div>
             <div className="row my-3 justify-content-center">
                 <form className="form col-5 py-4" onSubmit={handleSubmit}>
                     <label className="texto_menu col-4">Imagen</label>
-                    <input type="text" className="col-7 m-2 input_form" onChange={handleChange} name='imagen' value={producto.imagen}></input>
+                    <input type="text" className="col-7 m-2 input_form" onChange={handleChange} name='imagen' value={(producto as any).imagen}></input>
                     <label className="texto_menu col-4">Nombre</label>
-                    <input type="text" className="col-7 m-2 input_form" onChange={handleChange} name='nombre' value={producto.nombre}></input>
+                    <input type="text" className="col-7 m-2 input_form" onChange={handleChange} name='nombre' value={(producto as any).nombre}></input>
                     <label className="texto_menu col-4">Cantidad</label>
-                    <input type="number" className="col-7 m-2 input_form" onChange={handleChange} name='cantidad' value={producto.cantidad}></input>
+                    <input type="number" className="col-7 m-2 input_form" onChange={handleChange} name='cantidad' value={(producto as any).cantidad}></input>
                     <label className="texto_menu col-4">Fecha Ingreso</label>
-                    <input type="date" className="col-7 m-2 input_form" onChange={handleChange} name='f_ingreso' value={formatApiDate(producto.f_ingreso)}></input>
+                    <input type="date" className="col-7 m-2 input_form" onChange={handleChange} name='f_ingreso' value={formatApiDate((producto as any).f_ingreso)}></input>
                     <label className="texto_menu col-4">Fecha Vencimiento</label>
-                    <input type="date" className="col-7 m-2 input_form" onChange={handleChange} name='f_vencimiento' value={formatApiDate(producto.f_vencimiento)}></input>
+                    <input type="date" className="col-7 m-2 input_form" onChange={handleChange} name='f_vencimiento' value={formatApiDate((producto as any).f_vencimiento)}></input>
                     <label className="texto_menu col-4">Costo</label>
-                    <input type="number" className="col-7 m-2 input_form" onChange={handleChange} name='costo' value={producto.costo}></input>
+                    <input type="number" className="col-7 m-2 input_form" onChange={handleChange} name='costo' value={(producto as any).costo}></input>
                     <div className="row text-center my-3">
                         <div className="btn">
                             <Registrar />
@@ -92,3 +92,5 @@ export default function editInsumos() {
         </>
     );
 }
+
+export default EditInsumos;

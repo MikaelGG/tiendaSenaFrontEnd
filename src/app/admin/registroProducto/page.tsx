@@ -52,9 +52,9 @@ export default function RegistroCarta(){
             <input  onChange={(event) => { setImagen(event.target.value); }} name="imagen"  type="text" className="col-7 m-2 input_form" multiple ></input>
             <label className="texto_menu col-4">Nombre</label>
             <input  onChange={(event) => { setNombre(event.target.value); }} value={nombre} type="text" className="col-7 m-2 input_form" ></input>     
-            <div className="d-flex align-items-start ">
+            <div className="d-flex align-items-start ">                   
                 <label className="texto_menu col-4 mt-2">Descripción</label>
-                <textarea cols="30" rows="5" onChange={(event) => { setDescripcion(event.target.value); }} value={descripcion} type="textarea" className="col-7 m-2 input_form"></textarea>
+                <textarea onChange={(event) => { setDescripcion(event.target.value); }} className="col-7 m-2 input_form" style={{width: "60%", minHeight:"100px"  }}/>
             </div>
             <label className="texto_menu col-4">Precio</label>
             <input onChange={(event) => { setPrecio(parseInt(event.target.value)); }} value={precio} type="number" className="col-7 m-2 input_form" ></input>

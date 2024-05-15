@@ -28,17 +28,17 @@ export default function Provedores(){
                 <div className="col-3">Dirección</div>
                 <div className="col-2">Teléfono</div>
             </div>
-            <div className="row mx-2 texto_drop my-3">
                 {proveedoresList.map((val,key)=>{
                     return <>
-                        <div className="col-2 mb-3">{val.nit}</div>
-                        <div className="col-4 mb-3">{val.nombre} {val.apellido}</div>
-                        <div className="col-3 mb-3">{val.direccion}</div>
-                        <div className="col-2 mb-3">{val.telefono}</div>
-                        <hr />
+                        <div className="row mx-2 texto_drop my-3" key={key}>
+                            <div className="col-2 mb-3">{(val as any).nit}</div>
+                            <div className="col-4 mb-3">{(val as any).nombre} {(val as any).apellido}</div>
+                            <div className="col-3 mb-3">{(val as any).direccion}</div>
+                            <div className="col-2 mb-3">{(val as any).telefono}</div>
+                            <hr />
+                        </div>
                     </>})
                 }
-            </div>
         </div>
     </>)
 }

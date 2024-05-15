@@ -69,20 +69,20 @@ export default function Eventos(){
             <br />
                 {eventosList.map((val,key)=>{
                     return (<>
-                        <article className={`${event.postcard} ${event.light} ${event.blue}`}>
+                        <article className={`${event.postcard} ${event.light} ${event.blue}`} key={key}>
                             <a className={`${event.postcard__img_link} `}>
-                                <img className={`${event.postcard__img}`} src={val.imagen} alt="Image Title" />
+                                <img className={`${event.postcard__img}`} src={(val as any).imagen} alt="Image Title" />
                             </a>
                             <div className={`${event.postcard__text} ${event.tdark}`}>
-                                <h1 className={`${event.postcard__title}  ${event.blue} ${event.text_nav}`}>{val.titulo}</h1>
+                                <h1 className={`${event.postcard__title}  ${event.blue} ${event.text_nav}`}>{(val as any).titulo}</h1>
                                 <div className={`${event.postcard__bar}`}></div>
-                                <div className={`${event.postcard__previewtxt}`}>{val.descripcion}</div>
+                                <div className={`${event.postcard__previewtxt}`}>{(val as any).descripcion}</div>
                                 <ul className={`${event.postcard__tagbox}`}>
-                                    <li className={`${event.tag__item}`}><i className={`fas fa-users ${event.mr_2}`}></i>{val.cupo}</li>
-                                    <li className={`${event.tag__item}`}><i className={`fas fa-clock ${event.mr_2}`}></i>{val.hora_inicio} - {val.hora_fin}</li>
-					                <li className={`${event.tag__item} `}><i className={`fas fa-calendar ${event.mr_2}`}></i>{formatDate(val.fecha)}</li>
+                                    <li className={`${event.tag__item}`}><i className={`fas fa-users ${event.mr_2}`}></i>{(val as any).cupo}</li>
+                                    <li className={`${event.tag__item}`}><i className={`fas fa-clock ${event.mr_2}`}></i>{(val as any).hora_inicio} - {(val as any).hora_fin}</li>
+					                <li className={`${event.tag__item} `}><i className={`fas fa-calendar ${event.mr_2}`}></i>{formatDate((val as any).fecha)}</li>
                                 </ul>
-                                <button className={`${styles.ingresar} col-3 text-center align-items-center mt-3`} onClick={()=>{ eliminar(val.codigo)}} 
+                                <button className={`${styles.ingresar} col-3 text-center align-items-center mt-3`} onClick={()=>{ eliminar((val as any).codigo)}} 
                                 type="submit"><a className={`${styles.text_form}`}>Eliminar</a></button>
                             </div>
                         </article>

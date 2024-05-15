@@ -1,5 +1,4 @@
 'use client'
-import NavUsuarioItems from "../navItems/page"
 import styles from "../usuario.module.css"
 const navU = [
     {name: "Inicio", url: "../usuario/inicio", id: 1},
@@ -18,9 +17,12 @@ export default function NavUsuario({name}:{name:string}){
                 </div>
                 <div className={`${styles.nav} ${styles.text_nav} ${styles.paddingR} col-6 text-center my-2`}>
                 {
-                    navU.map((nav) =>
-                    <NavUsuarioItems key={crypto.randomUUID()} name={nav.name} url={nav.url} isActive={nav.name == name}/>
-                    )
+                    <li className={ `${styles.item_nav} ms-4`}>
+                        <a className={`${styles.texto} ms-4` }  href="../usuario/inicio"> Inicio</a>
+                        <a className={`${styles.texto} ms-4`}  href="../usuario/eventos"> Eventos </a>
+                        <a className={`${styles.texto} ms-4`}  href="../usuario/carta"> Carta</a>
+                        <a className={`${styles.texto} ms-4`}  href="../usuario/sesion"> Iniciar sesión</a>
+                    </li>       
                 }
                 </div>
         </div>

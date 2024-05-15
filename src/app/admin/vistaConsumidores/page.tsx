@@ -22,23 +22,24 @@ export default function Consumidores(){
             <a href="/admin/registroConsumidor" className="text-center col-6"><Registrar/></a> 
         </div>
         <div className="col-10 text-center my-3 container">
-        <div className="texto_menu mx-2 my-1 row table">
+            <div className="texto_menu mx-2 my-1 row table">
                 <div className="col-3">Documento/NIT</div>
                 <div className="col-3">Nombre</div>
                 <div className="col-3">Apellido</div>
                 <div className="col-3">Teléfono</div>
             </div>
-            <div className="row mx-2 my-1 my-3 texto_drop">
+            
             {consumidoresList.map((val,key)=>{
                 return <>
-                    <div className="col-3 mb-3">{val.cedula}</div>
-                    <div className="col-3 mb-3">{val.nombre}</div>
-                    <div className="col-3 mb-3">{val.apellido}</div>
-                    <div className="col-3 mb-3">{val.telefono}</div>
+                <div className="row mx-2 my-1 my-3 texto_drop" key={key}>
+                    <div className="col-3 mb-3">{(val as any).cedula}</div>
+                    <div className="col-3 mb-3">{(val as any).nombre}</div>
+                    <div className="col-3 mb-3">{(val as any).apellido}</div>
+                    <div className="col-3 mb-3">{(val as any).telefono}</div>
                     <hr />
+                </div>
                 </>})
             }
-            </div>
         </div>
     </>)
 }

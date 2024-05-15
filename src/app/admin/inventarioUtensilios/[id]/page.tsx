@@ -7,7 +7,7 @@ import style from "@/app/admin/admin.module.css";
 import Swal from "sweetalert2";
 
 
-export default function editUtensilios(){
+function EditUtensilios(){
     const [producto, setProducto] = useState({});
     const router = useParams();
     const route = useRouter();
@@ -50,16 +50,16 @@ export default function editUtensilios(){
                 <div className="text_nav text-center"><a className="tittle">Editar Utensilio</a></div>
             </div>
             <div className="row justify-content-center">
-                <img className={`${style.img_invent} col-3`} src={producto.imagen} alt=""/>
+                <img className={`${style.img_invent} col-3`} src={(producto as any).imagen} alt=""/>
             </div>
             <div className="row my-3 justify-content-center">
                 <form className="form col-5 py-4" onSubmit={handleSubmit}>
                     <label className="texto_menu col-4">Imagen</label>
-                    <input type="text" className="col-7 m-2 input_form" onChange={handleChange} name='imagen' value={producto.imagen}></input>
+                    <input type="text" className="col-7 m-2 input_form" onChange={handleChange} name='imagen' value={(producto as any).imagen}></input>
                     <label className="texto_menu col-4">Nombre</label>
-                    <input type="text" className="col-7 m-2 input_form" onChange={handleChange} name='nombre' value={producto.nombre || ''}></input>
+                    <input type="text" className="col-7 m-2 input_form" onChange={handleChange} name='nombre' value={(producto as any).nombre || ''}></input>
                     <label className="texto_menu col-4">Cantidad</label>
-                    <input type="number" className="col-7 m-2 input_form" onChange={handleChange} name='cantidad' value={producto.cantidad || ''}></input>
+                    <input type="number" className="col-7 m-2 input_form" onChange={handleChange} name='cantidad' value={(producto as any).cantidad || ''}></input>
                     <div className="row text-center my-3">
                         <div className="btn"><Registrar/></div><br></br>
                     </div>
@@ -68,3 +68,5 @@ export default function editUtensilios(){
         </>
     );
 }
+
+export default EditUtensilios;

@@ -22,7 +22,7 @@ export default function Carta() {
     }, [])
 
     const setInitialState = (data: any) => {
-        const cafesProducts = data.filter(product => product.tipo === 'cafes');
+        const cafesProducts = data.filter((product: any) => product.tipo === 'cafes');
         setFilteredProducts(cafesProducts);
         setBotonSeleccionado('cafes');
     };
@@ -49,7 +49,7 @@ export default function Carta() {
     };
 
     const filterProducts = (tipo: any) => {
-        const filtered = productosList.filter(product => product.tipo === tipo);
+        const filtered = productosList.filter(product => (product as any).tipo === tipo);
         setFilteredProducts(filtered);
         setBotonSeleccionado(tipo);
     }
@@ -69,21 +69,21 @@ export default function Carta() {
         <div className="row pt-2 mx-3 justify-content-center">
             {filteredProducts.map((val, key) => {
                 return <>
-                    <div className={`${style.carta} col-5 mt-2 mx-2`}>
+                    <div className={`${style.carta} col-5 mt-2 mx-2`} key={key}>
                         <div key={key}></div>
-                        <div className="col-12 text-center my-3 fs-5"><b>{val.nombre}</b></div>
+                        <div className="col-12 text-center my-3 fs-5"><b>{(val as any).nombre}</b></div>
                         <div className={`${styles.img_inicio} col-12 text-center`}>
-                            <img className={`${style.img_invent} `} src={val.imagen} alt="" />
+                            <img className={`${style.img_invent} `} src={(val as any).imagen} alt="" />
                         </div><br></br>
-                        <div className="col-12 text-center">{val.descripcion}</div><br></br>
-                        <div className="col-12 text-center fs-5"><b>Precio </b>{formatNumberCOP(val.precio)}</div>
+                        <div className="col-12 text-center">{(val as any).descripcion}</div><br></br>
+                        <div className="col-12 text-center fs-5"><b>Precio </b>{formatNumberCOP((val as any).precio)}</div>
                         <div className="col-12 justify-content-center">
-                            <Link href={`/admin/vistaProductos/${val.codigo}`} className={`${styles.text_form}`}>
+                            <Link href={`/admin/vistaProductos/${(val as any).codigo}`} className={`${styles.text_form}`}>
                                 <button className={`${styles.ingresar} col-5 text-center align-items-center m-3 p-1 `}
                                     type="submit">Editar</button>
                             </Link>
                             <button className={`${styles.ingresar} col-5 text-center align-items-center p-1 `} onClick={() => {
-                                eliminar(val.codigo);
+                                eliminar((val as any).codigo);
                             }} type="submit"><a className={`${styles.text_form}`}>Dar de baja</a></button>
                         </div>
                     </div>

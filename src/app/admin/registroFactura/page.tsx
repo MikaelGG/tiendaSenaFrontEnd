@@ -74,7 +74,7 @@ export default function PageFactura() {
             });
         }).catch(error => {
             console.error("Error al enviar la factura:", error);
-            alert("Hubo un error al registrar la factura. Consulta la consola para más detalles.");
+            Swal.fire("Consulta la consola para mas detalles", "", "error");
         });
 
     };
@@ -89,7 +89,7 @@ export default function PageFactura() {
                 cantidad: fila.cantidad
             }).catch(error => {
                 console.error("Error al enviar la factura:", error);
-                alert("Hubo un error al registrar la factura. Consulta la consola para más detalles.");
+                Swal.fire("Consulta la consola para mas detalles", "", "error");
             });
         })
     }
@@ -102,13 +102,15 @@ export default function PageFactura() {
             <div className="row justify-content-center">
                 <div className="form col-5 py-4">
                     <label className="texto_menu col-4">Consumidor</label>
-                    <select onChange={(event) => { setConsumidor(event.target.value); }} className="col-7 m-3 input_form">
+                    <select onChange={(event) => { setConsumidor(parseInt(event.target.value)) }} className="col-7 m-3 input_form">
+                        <option value="">Selecciona un consumidor</option>
                         {consumidoresList && consumidoresList.length > 0 ? ( consumidoresList.map((val, key) => (
-                            <option key={key} value={val.cedula}>{val.nombre} {val.apellido}</option>
+                            <option key={key} value={(val as any).cedula}>{(val as any).nombre} {(val as any).apellido}</option>
                             ))
                             ) : (
                                 <option value="">Cargando...</option>
-                            )}
+                            )
+                        }
                     </select>
                     <label className="texto_menu col-4">Fecha de factura</label>
                     <input onChange={(event) => { setFecha(event.target.value); }} type="date" className="col-7 m-3 input_form"></input>
@@ -131,7 +133,7 @@ export default function PageFactura() {
                                     <select id="selectProducto" onChange={(event) => handleProductoChange(index, event.target.value)} className="col-3 texto_drop">
                                         <option>Selecciona el producto</option>
                                         {productosList.map((val, key) => {
-                                            return <option key={key} value={val.codigo}>{val.nombre}</option>;
+                                            return <option key={key} value={(val as any).codigo}>{(val as any).nombre}</option>;
                                         })}
                                     </select>
                                     <input onChange={(event) => handleCantidadChange(index, event.target.value)} type="number" className="col-3 texto_drop" value={fila.cantidad}></input>

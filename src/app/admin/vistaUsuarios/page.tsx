@@ -30,17 +30,19 @@ export default function Usuarios(){
         <div className="col-3 ">Apellidos</div>
         <div className="col-3 ">Correo</div>       
       </div>
-      <div className="row mx-2 texto_drop my-3">
+      
         {usuariosList.map((val,key)=>{
           return <>
-          <div className="col-3 mb-3">{val.cedula}</div>
-          <div className="col-3 mb-3">{val.nombre}</div>
-          <div className="col-3 mb-3">{val.apellido}</div>
-          <div className="col-3 mb-3">{val.correo}</div>
-          <hr  />
+          <div className="row mx-2 texto_drop my-3" key={key}>
+            <div className="col-3 mb-3">{(val as any).cedula}</div>
+            <div className="col-3 mb-3">{(val as any).nombre}</div>
+            <div className="col-3 mb-3">{(val as any).apellido}</div>
+            <div className="col-3 mb-3">{(val as any).correo}</div>
+            <hr  />
+          </div>
           </>})
         }
-      </div>
+      
     </div>
   </>)
 }
