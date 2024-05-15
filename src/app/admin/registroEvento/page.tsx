@@ -76,7 +76,7 @@ export default function RegEvento(){
         </div>
         <div className="row justify-content-center">
             <div className="form col-5 py-4">
-                <form method="post" action="vistaEvento">
+                
                     <label className="texto_menu col-4">Nombre del evento</label>
                     <input type="text" className="col-7 m-2 input_form" onChange={(event) => {setTitulo(event.target.value)}} />
                     <label className="texto_menu col-4">Fecha del evento</label>
@@ -106,7 +106,7 @@ export default function RegEvento(){
                         <textarea onChange={(event) => { setDescripcion(event.target.value); }} className="col-7 m-2 input_form" style={{width: "60%", minHeight:"100px"  }}/>
                     </div>
                     <div className="text-center my-3" onClick={add}><Registrar/></div>
-                </form>
+               
             </div>
         </div>
     
