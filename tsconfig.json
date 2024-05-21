@@ -23,5 +23,6 @@
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/admin/vistaFactura", "src/app/componentes/validationForm/validationForm.js"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
 }
+

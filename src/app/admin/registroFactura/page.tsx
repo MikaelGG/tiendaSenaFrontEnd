@@ -137,7 +137,7 @@ export default function PageFactura() {
                                         })}
                                     </select>
                                     <input onChange={(event) => handleCantidadChange(index, event.target.value)} type="number" className="col-3 texto_drop" value={fila.cantidad}></input>
-                                    <input onChange={(event) => handlePrecioChange(index, event.target.value)} type="number" className="col-3 texto_drop" value={fila.precio}></input>
+                                    <input onChange={(event) => handlePrecioChange(index, event.target.value)} type="number" className="col-3 texto_drop" value={fila.precio} ></input>
                                     <input type="number" className="col-3 texto_drop" readOnly value={fila.subtotal}></input>
                                 </div>  
                             </div>

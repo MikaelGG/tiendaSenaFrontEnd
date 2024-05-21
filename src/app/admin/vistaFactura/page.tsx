@@ -1,7 +1,6 @@
 'use client'
 import styles from "../../usuario/usuario.module.css"
 import style from "@/app/admin/admin.module.css"
-import Registrar from "@/app/componentes/botones/registrar";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Link from 'next/link';
@@ -11,13 +10,13 @@ import Modal from 'react-bootstrap/Modal';
 import { formatNumber, formatNumberCOP } from '@/app/componentes/formatNumber';
 import Swal from "sweetalert2";
 
-
 export default function VistaFactura(){
 
     const [facturasList, setFacturas] = useState([]);
     const [facturasProdList, setFacturasProd] = useState([]);
     const [modalShow, setModalShow] = React.useState(false);
-    
+    const [selectedDate, setSelectedDate] = useState(Date);
+
     
     useEffect(() =>{
         axios.get("http://localhost:4000/api/invoice",).then((response)=>{
@@ -66,6 +65,13 @@ export default function VistaFactura(){
         return `${year}-${month}-${day}`;
     }
 
+    const manejarSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        localStorage.setItem('selectedDate', selectedDate);
+        window.location.href = '/facturaFecha';
+        window.location.href = `/admin/vistaFactura/facturaFecha`;
+    };
+
     function MyVerticallyCenteredModal(props: any) {
         return (
             <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
@@ -106,10 +112,20 @@ export default function VistaFactura(){
             <div className="text_nav text-center"><a className="tittle">Facturas</a></div>
         </div>
         <div className="row text-center justify-content-center">
-            <div className="col-6">
-                <Link href={`/admin/registroFactura`} className={`${styles.text_form}`}>
-                    <div className="div"><Registrar/></div><br></br>
-                </Link>
+            <div className={`${style.contenedor}`}>
+                <div className={`${style.registrar}`}>
+                    <Link href={`/admin/registroFactura`} className={`${styles.text_form}`}>
+                        <span className={`${style.edit} w-100 mx-4 text-center align-items-center p-1`}>Registrar factura</span>
+                    </Link>
+                </div>
+                <form onSubmit={manejarSubmit}>
+                    <div className={`${styles.fecha_y_boton}`}>
+                        <div className={`${style.fecha_y_contenedor}`}>
+                            <input type="date" id="selectedDate" name="selectedDate" value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} />                             
+                            <button className={`${style.edit} w-50 mx-1 text-center align-items-center p-1`} type="submit" >Ver </button>         
+                         </div>
+                    </div>
+                </form>
             </div>
             <div className="col-11 text-center my-3 container">
                 <div className="texto_menu mx-2 my-1 row table">

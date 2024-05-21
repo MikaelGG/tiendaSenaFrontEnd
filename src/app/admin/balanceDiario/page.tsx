@@ -4,7 +4,6 @@ import style from "../../usuario/usuario.module.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
-import { isTemplateExpression } from "typescript";
 import { formatNumber, formatNumberCOP } from '@/app/componentes/formatNumber';
 
 
@@ -97,7 +96,7 @@ export default function BalanceDiario() {
             </div>
             <div className={`${styles.img_inicio} row `}>
               <b className={`${styles.ingresos_egresos} fs-1 mx-5 col-5`}>{formatNumberCOP(egresosList)}</b>
-              <img className="col-3 pt-4 mx-4 mt-3" src="/decremento.svg" alt="" />
+              <img className="col-3" src="/decremento.svg" alt="" />
             </div>
           </div>
         </div>

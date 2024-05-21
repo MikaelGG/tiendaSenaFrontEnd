@@ -48,6 +48,12 @@
     width: 250px;
     height: 150px;
 }
+.img_product{
+    border: #000 1px solid;
+    border-radius: 25px;
+    width: 250px;
+    height: 200px;
+}
 .edit{
     color: white;
     float: right;
@@ -94,10 +100,44 @@
 .ingresos_egresos{
     display: flex;
     align-items: center;
-    margin-right: 30px;
+    margin-right: 50px;
 }
 .botonCafe{
     background-color: #663300;
     color: white;
 }
 
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    width: fit-content; /* Adjust width as needed */
+}
+  
+  .registrar {
+    text-align: center;
+    padding: 10px; /* Add padding around the text */
+    margin-left: 50px;
+    margin-bottom: 30px;
+  }
+  
+  .registrar span {
+    display: block; /* Occupies the full available width */
+    margin: 0 auto; /* Centers horizontally */
+  }
+  
+  .fecha_y_boton {
+    display: flex;
+    flex-direction: row; /* Arrange items side-by-side */
+    align-items: center; /* Vertically align items */
+    gap: 10px; /* Space between date and button */
+  }
+  
+  .fecha_y_contenedor {
+    display: flex; /* Allow date and button to be styled together */
+  }
+
+  .generarPDF {
+    display: grid;
+    place-items: center;
+    margin-top: 60px;
+}

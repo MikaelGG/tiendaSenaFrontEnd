@@ -4,8 +4,6 @@ import axios from "axios";
 import Registrar from "@/app/componentes/botones/registrar";
 import { useRouter} from "next/navigation";
 import Swal from "sweetalert2";
-import moment from "moment";
-
 
 export default function RegEvento(){
 
@@ -16,14 +14,11 @@ export default function RegEvento(){
     const [amPmFin, setAmPmFin] = useState("");
     const [titulo, setTitulo] = useState("");
     const [imagen, setImagen] = useState("");
-    const [descripcion, setDescripcion] = useState<string>('');
+    const [descripcion, setDescripcion] = useState('');
     const [cupo, setCupo] = useState(0);
     const [fecha, setFecha] = useState(Date);
 
     const add = async ()=>{
-        function isValidDate(date: any) {
-            return moment(date, 'YYYY-MM-DD', true).isValid();
-        }
         if (!imagen) {
             Swal.fire("Completa correctamente la imagen.", "", "error")
             return;           
@@ -33,14 +28,14 @@ export default function RegEvento(){
         } else if (!cupo) {
             Swal.fire("Completa correctamente el cupo", "", "error")
             return;
-        } else if (!isValidDate(fecha)){
+        } else if (!fecha){
             Swal.fire("Completa correctamente la fecha del evento", "", "error")
             return;
-        } else if (!hora_inicio) {
+        } else if (!hora_inicio || !amPmInicio) {
             Swal.fire("Completa correctamente la hora de inicio", "", "error");
             return;
-        } else if (!hora_fin) {
-            Swal.fire("Completa correctamente la hora de fin", "", "error");
+        } else if (!hora_fin || !amPmFin ) {
+            Swal.fire("Completa correctamente la hora de finalización", "", "error");
             return;
         }
 
@@ -65,7 +60,7 @@ export default function RegEvento(){
     function getFechaActual() {
         const today = new Date();
         const year = today.getFullYear();
-        const month = String(today.getMonth() + 1).padStart(2, '0'); // Enero es 0!
+        const month = String(today.getMonth() + 1).padStart(2, '0'); 
         const day = String(today.getDate()).padStart(2, '0');
         return `${year}-${month}-${day}`;
     }
@@ -85,7 +80,7 @@ export default function RegEvento(){
                     <input onChange={(event) => { setHora_inicio(event.target.value); }} type="text" className="col-4 m-2 input_form"></input>
                     <select
                         onChange={(event) => { setAmPmInicio(event.target.value) }} className="col-2 m-2 input_form">
-                        <option>Jornada</option>
+                        <option value="Jr">Jornada</option>
                         <option value="AM">AM</option>
                         <option value="PM">PM</option>
                     </select>
@@ -93,7 +88,7 @@ export default function RegEvento(){
                     <input onChange={(event) => { setHora_fin(event.target.value) }} type="text" className="col-4 m-2 input_form"></input>
                     <select
                         onChange={(event) => { setAmPmFin(event.target.value) }} className="col-2 m-2 input_form">
-                        <option>Jornada</option>
+                        <option value="Jr">Jornada</option>
                         <option value="AM">AM</option>
                         <option value="PM">PM</option>
                     </select>

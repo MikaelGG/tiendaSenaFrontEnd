@@ -47,9 +47,10 @@ function EditInsumos() {
 
     function formatApiDate(dateString: any) {
         const date = new Date(dateString);
-        const year = date.getFullYear();
-        const month = (date.getMonth() + 1).toString().padStart(2, '0');
-        const day = date.getDate().toString().padStart(2, '0');
+        const nextDay = new Date(date.getTime() + (24 * 60 * 60 * 1000)); // Agregar un día
+        const year = nextDay.getFullYear();
+        const month = (nextDay.getMonth() + 1).toString().padStart(2, '0');
+        const day = nextDay.getDate().toString().padStart(2, '0');
         return `${year}-${month}-${day}`;
     }
 
@@ -61,11 +62,7 @@ function EditInsumos() {
                 </div>
             </div>
             <div className="row justify-content-center">
-                <img
-                    className={`${style.img_invent} col-3`}
-                    src={(producto as any).imagen}
-                    alt=""
-                ></img>
+                <img className={`${style.img_product} col-3`} src={(producto as any).imagen} alt=""></img>
             </div>
             <div className="row my-3 justify-content-center">
                 <form className="form col-5 py-4" onSubmit={handleSubmit}>

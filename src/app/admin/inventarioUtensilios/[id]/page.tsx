@@ -50,7 +50,7 @@ function EditUtensilios(){
                 <div className="text_nav text-center"><a className="tittle">Editar Utensilio</a></div>
             </div>
             <div className="row justify-content-center">
-                <img className={`${style.img_invent} col-3`} src={(producto as any).imagen} alt=""/>
+                <img className={`${style.img_product} col-3`} src={(producto as any).imagen} alt=""/>
             </div>
             <div className="row my-3 justify-content-center">
                 <form className="form col-5 py-4" onSubmit={handleSubmit}>

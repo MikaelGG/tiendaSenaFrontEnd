@@ -5,9 +5,9 @@ import Footer from "../componentes/footer/page";
 export default function LayoutUs({children}:{children: React.ReactNode}){
     return(
     <div className="container-fluid" >
-    <NavUsuario name="user"/>
-    <Main>{children}</Main>
-    <Footer/>
+        <NavUsuario/>
+        <Main>{children}</Main>
+        <Footer/>
     </div>)
 
 }

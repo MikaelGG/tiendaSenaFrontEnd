@@ -73,7 +73,7 @@ export default function Carta() {
                         <div key={key}></div>
                         <div className="col-12 text-center my-3 fs-5"><b>{(val as any).nombre}</b></div>
                         <div className={`${styles.img_inicio} col-12 text-center`}>
-                            <img className={`${style.img_invent} `} src={(val as any).imagen} alt="" />
+                            <img className={`${style.img_product} `} src={(val as any).imagen} alt="" />
                         </div><br></br>
                         <div className="col-12 text-center">{(val as any).descripcion}</div><br></br>
                         <div className="col-12 text-center fs-5"><b>Precio </b>{formatNumberCOP((val as any).precio)}</div>
