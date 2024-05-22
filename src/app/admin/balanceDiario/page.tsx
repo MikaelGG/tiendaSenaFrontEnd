@@ -75,7 +75,7 @@ export default function BalanceDiario() {
         })}
       </div>
 
-      <div className="container mx-5 my-3">
+      <div className={` ${styles.fixed_height} container mx-5 my-3 `}>
         <div className="row">
           <div className={`${styles.list} col-5 ms-4`}></div>
           <div className={`${styles.list} col-5 ms-4`}></div>
@@ -83,20 +83,20 @@ export default function BalanceDiario() {
         <div className="row">
           <div className={`${styles.list_data} col-5 ms-4`}>
               <div className="row mt-2 fs-2 mx-5 col-8">
-                <h2><b> Ingresos: </b></h2> 
+                <h2><b>Ingresos: </b></h2> 
               </div>
             <div className={`${styles.img_inicio} row `}>
-              <b className={`${styles.ingresos_egresos} fs-1 mx-5 col-5`}> {formatNumberCOP(ingresosList)}</b>
-              <img className="col-4 " src="/incremento.svg" alt=""/>
+              <b className={`${styles.ingresos_egresos} fs-1  col-5`}> {formatNumberCOP(ingresosList)}</b>
+              <img className="col-4" src="/incremento.svg" alt="" />
             </div>
           </div>
           <div className={`${styles.list_data} col-5 ms-4`}>
             <div className="row mt-2 fs-2 mx-5 col-8">
-              <h2><b> Egresos: </b></h2> 
+              <h2><b>Egresos: </b></h2>
             </div>
             <div className={`${styles.img_inicio} row `}>
-              <b className={`${styles.ingresos_egresos} fs-1 mx-5 col-5`}>{formatNumberCOP(egresosList)}</b>
-              <img className="col-3" src="/decremento.svg" alt="" />
+              <b className={`${styles.ingresos_egresos} fs-1  col-5`}>{formatNumberCOP(egresosList)}</b>
+              <img className="col-3 pt-4 mx-4 mt-3" src="/decremento.svg" alt="" />
             </div>
           </div>
         </div>

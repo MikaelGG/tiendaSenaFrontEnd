@@ -100,7 +100,7 @@
 .ingresos_egresos{
     display: flex;
     align-items: center;
-    margin-right: 50px;
+    margin-right: 90px;
 }
 .botonCafe{
     background-color: #663300;
@@ -141,3 +141,8 @@
     place-items: center;
     margin-top: 60px;
 }
+
+.fixed_height {
+    height: 300px; /* Ajusta esta altura según tus necesidades */
+    overflow-y: auto; /* Esto agregará un scroll vertical si el contenido excede la altura fija */
+  }
