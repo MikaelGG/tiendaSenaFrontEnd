@@ -4,7 +4,6 @@ import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
-import moment from "moment";
 
 export default function RegistroInsumos(){
     const [nombre, setNombre] = useState("");
@@ -16,8 +15,12 @@ export default function RegistroInsumos(){
     const router = useRouter();
 
     const add = ()=>{
-        function isValidDate(date: any) {
-            return moment(date, 'YYYY-MM-DD', true).isValid();
+        function isValidDate(dateString: any) {
+            // Intenta crear un objeto Date con la cadena de fecha
+            const dateObject = new Date(dateString);
+            
+            // Si el objeto Date es válido y el año, mes y día coinciden con la cadena de fecha proporcionada, es una fecha válida
+            return !isNaN(dateObject.getTime()) && dateObject.toISOString().slice(0,10) === dateString;
         }
         if (nombre.trim() === '' || nombre.length < 3) {
             Swal.fire("Completa correctamente el nombre.", "", "error")
