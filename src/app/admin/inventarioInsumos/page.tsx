@@ -38,7 +38,6 @@ export default function Insumos() {
     });
   };
 
-
   function formatDate(dateString: any) {
     const date = new Date(dateString);
     const year = date.getFullYear();
@@ -88,7 +87,7 @@ export default function Insumos() {
               <br />
             </div>
             <div className="col-sm-6 col-md-4 col-lg-3">
-              <Link href={`/admin/inventarioInsumos/${(val as any).codigo}`} className={`${styles.text_form}`}>
+              <Link href={`/admin/inventarioInsumos/editarInsumo?codigo=${(val as any).codigo}`} className={`${styles.text_form}`}>
                 <button className={`${style.edit} w-100 my-2 text-center align-items-center p-1 `}
                   type="submit">Editar</button>
               </Link>

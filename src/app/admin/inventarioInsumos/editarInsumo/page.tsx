@@ -1,5 +1,5 @@
 'use client'
-import { useParams, useRouter, } from 'next/navigation';
+import { useParams, useSearchParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Registrar from "@/app/componentes/botones/registrar";
@@ -10,10 +10,13 @@ function EditInsumos() {
     const [producto, setProducto] = useState({})
     const router = useParams();
     const route = useRouter();
-    const { id } = router
+    const searchParams = useSearchParams();
+    const codigo = searchParams.get('codigo');
+
+    console.log(codigo, "COidgooooo");
 
     useEffect(() => {
-        axios.get(`http://localhost:4000/api/rawMaterial/${id}`,).then((response) => {
+        axios.get(`http://localhost:4000/api/rawMaterial/${codigo}`,).then((response) => {
             const product = response.data[0]
             const formattedProduct = {
                 ...product,
@@ -24,7 +27,7 @@ function EditInsumos() {
             console.log(producto)
             console.log(product)
         });
-    }, [id]);
+    }, [codigo]);
 
     const handleChange = (event: any) => {
         const { name, value } = event.target;
@@ -37,7 +40,7 @@ function EditInsumos() {
 
     const handleSubmit = async (event: any) => {
         event.preventDefault();
-        axios.put(`http://localhost:4000/api/rawMaterial/${id}`, producto
+        axios.put(`http://localhost:4000/api/rawMaterial/${codigo}`, producto
         ).then(() => {
             Swal.fire("Insumo editado correctamente", "", "success").then(() => {
                 route.push("/admin/inventarioInsumos")

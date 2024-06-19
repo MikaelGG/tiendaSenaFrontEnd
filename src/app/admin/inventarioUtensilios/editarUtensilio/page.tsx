@@ -1,5 +1,5 @@
 'use client'
-import { useParams, useRouter } from 'next/navigation';
+import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Registrar from "@/app/componentes/botones/registrar";
@@ -11,17 +11,18 @@ function EditUtensilios(){
     const [producto, setProducto] = useState({});
     const router = useParams();
     const route = useRouter();
-    const { id } = router;
+    const searchParams = useSearchParams();
+    const codigo = searchParams.get('codigo');
 
     useEffect(() => {
-        axios.get(`http://localhost:4000/api/utensil/${id}`).then((response) => {
+        axios.get(`http://localhost:4000/api/utensil/${codigo}`).then((response) => {
             const product = response.data[0]
             setProducto(product);
             console.log(producto)
         }).catch(error => {
             console.error('Error al obtener el producto:', error);
         });
-    }, [id]);
+    }, [codigo]);
 
     const handleChange = (event: any) => {
         const { name, value } = event.target;
@@ -33,7 +34,7 @@ function EditUtensilios(){
 
     const handleSubmit = async (event: any) => {
         event.preventDefault();
-        axios.put(`http://localhost:4000/api/utensil/${id}`, producto)
+        axios.put(`http://localhost:4000/api/utensil/${codigo}`, producto)
         .then(() => {
             Swal.fire("Utensilio editado correctamente", "", "success").then(() =>{
                 route.push("/admin/inventarioUtensilios");
