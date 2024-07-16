@@ -9,19 +9,26 @@ import Swal from "sweetalert2";
 
 function EditUtensilios(){
     const [producto, setProducto] = useState({});
+    const [codigo, setCodigo] = useState<string | null>(null);
     const router = useParams();
     const route = useRouter();
-    const searchParams = useSearchParams();
-    const codigo = searchParams.get('codigo');
 
     useEffect(() => {
-        axios.get(`http://localhost:4000/api/utensil/${codigo}`).then((response) => {
-            const product = response.data[0]
-            setProducto(product);
-            console.log(producto)
-        }).catch(error => {
-            console.error('Error al obtener el producto:', error);
-        });
+        const searchParams = new URLSearchParams(window.location.search);
+        const codigoParam = searchParams.get('codigo');
+        setCodigo(codigoParam);
+    }, []);
+
+    useEffect(() => {
+        if (codigo){
+            axios.get(`http://localhost:4000/api/utensil/${codigo}`).then((response) => {
+                const product = response.data[0]
+                setProducto(product);
+                console.log(producto)
+            }).catch(error => {
+                console.error('Error al obtener el producto:', error);
+            });
+        }
     }, [codigo]);
 
     const handleChange = (event: any) => {

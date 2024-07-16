@@ -78,7 +78,7 @@ export default function Carta() {
                         <div className="col-12 text-center">{(val as any).descripcion}</div><br></br>
                         <div className="col-12 text-center fs-5"><b>Precio </b>{formatNumberCOP((val as any).precio)}</div>
                         <div className="col-12 justify-content-center">
-                            <Link href={`/admin/vistaProductos/${(val as any).codigo}`} className={`${styles.text_form}`}>
+                            <Link href={`/admin/vistaProductos/editarProducto?codigo=${(val as any).codigo}`} className={`${styles.text_form}`}>
                                 <button className={`${styles.ingresar} col-5 text-center align-items-center m-3 p-1 `}
                                     type="submit">Editar</button>
                             </Link>

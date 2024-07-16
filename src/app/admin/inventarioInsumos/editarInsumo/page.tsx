@@ -1,6 +1,6 @@
 'use client'
-import { useParams, useSearchParams, useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useParams, useSearchParams, useRouter} from 'next/navigation';
+import { useEffect, useState} from 'react';
 import axios from 'axios';
 import Registrar from "@/app/componentes/botones/registrar";
 import style from "@/app/admin/admin.module.css";
@@ -8,25 +8,32 @@ import Swal from "sweetalert2";
 
 function EditInsumos() {
     const [producto, setProducto] = useState({})
+    const [codigo, setCodigo] = useState<string | null>(null);
     const router = useParams();
     const route = useRouter();
-    const searchParams = useSearchParams();
-    const codigo = searchParams.get('codigo');
+
+    useEffect(() => {
+        const searchParams = new URLSearchParams(window.location.search);
+        const codigoParam = searchParams.get('codigo');
+        setCodigo(codigoParam);
+    }, []);
 
     console.log(codigo, "COidgooooo");
 
     useEffect(() => {
-        axios.get(`http://localhost:4000/api/rawMaterial/${codigo}`,).then((response) => {
-            const product = response.data[0]
-            const formattedProduct = {
-                ...product,
-                f_ingreso: formatApiDate(product.f_ingreso),
-                f_vencimiento: formatApiDate(product.f_vencimiento),
-            };
-            setProducto(formattedProduct);
-            console.log(producto)
-            console.log(product)
-        });
+        if (codigo){
+            axios.get(`http://localhost:4000/api/rawMaterial/${codigo}`,).then((response) => {
+                const product = response.data[0]
+                const formattedProduct = {
+                    ...product,
+                    f_ingreso: formatApiDate(product.f_ingreso),
+                    f_vencimiento: formatApiDate(product.f_vencimiento),
+                };
+                setProducto(formattedProduct);
+                console.log(producto)
+                console.log(product)
+            });
+        }
     }, [codigo]);
 
     const handleChange = (event: any) => {
