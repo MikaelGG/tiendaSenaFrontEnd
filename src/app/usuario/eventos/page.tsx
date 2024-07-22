@@ -15,7 +15,7 @@ const Eventos = () => {
   const [eventosList, setEventos] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:4000/api/event").then((response) => {
+    axios.get("https://backend-sand-omega.vercel.app/api/event").then((response) => {
       setEventos(response.data);
     });
   }, []);

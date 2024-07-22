@@ -17,7 +17,7 @@ export default function Eventos(){
     const [eventosList,setEventos] = useState([]);
 
     useEffect(() =>{
-        axios.get(`http://localhost:4000/api/event`,).then((response)=>{
+        axios.get(`https://backend-sand-omega.vercel.app/api/event`,).then((response)=>{
             setEventos(response.data);
         });
     }, [])
@@ -34,7 +34,7 @@ export default function Eventos(){
         }).then((result) => {
             if (result.isConfirmed) {
                 // Si el usuario confirma, realiza la llamada a la API para eliminar el elemento
-                axios.delete(`http://localhost:4000/api/event/${codigo}`).then(() => {
+                axios.delete(`https://backend-sand-omega.vercel.app/api/event/${codigo}`).then(() => {
                     // Mostrar un mensaje de éxito usando SweetAlert 2
                     Swal.fire("Evento eliminado", "", "success").then(() => {
                         location.reload();
