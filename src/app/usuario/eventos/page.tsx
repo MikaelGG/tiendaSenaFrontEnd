@@ -15,7 +15,7 @@ const Eventos = () => {
   const [eventosList, setEventos] = useState([]);
 
   useEffect(() => {
-    axios.get("https://api.latiendadelcafe.adso.cloud/api/event").then((response) => {
+    axios.get("https://backend-pink-omega.vercel.app/api/event").then((response) => {
       setEventos(response.data);
     });
   }, []);
