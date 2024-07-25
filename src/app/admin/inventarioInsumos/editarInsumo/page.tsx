@@ -22,7 +22,7 @@ function EditInsumos() {
 
     useEffect(() => {
         if (codigo){
-            axios.get(`http://localhost:4000/api/rawMaterial/${codigo}`,).then((response) => {
+            axios.get(`https://backtdc.vercel.app/api/rawMaterial/${codigo}`,).then((response) => {
                 const product = response.data[0]
                 const formattedProduct = {
                     ...product,
@@ -47,7 +47,7 @@ function EditInsumos() {
 
     const handleSubmit = async (event: any) => {
         event.preventDefault();
-        axios.put(`http://localhost:4000/api/rawMaterial/${codigo}`, producto
+        axios.put(`https://backtdc.vercel.app/api/rawMaterial/${codigo}`, producto
         ).then(() => {
             Swal.fire("Insumo editado correctamente", "", "success").then(() => {
                 route.push("/admin/inventarioInsumos")

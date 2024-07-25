@@ -26,7 +26,7 @@ export default function FacturaFecha() {
 
     useEffect(() => {
         if (storedDate) {
-            axios.get(`http://localhost:4000/api/invoice/${storedDate}`)
+            axios.get(`https://backtdc.vercel.app/api/invoice/${storedDate}`)
                 .then((response) => {
                     setFacturaList(response.data);
                 })
@@ -39,7 +39,7 @@ export default function FacturaFecha() {
 
     const fetchFacturaProd = async (nroFactura: any) => {
         try {
-            const response = await axios.get(`http://localhost:4000/api/invoiceProd/modal/${nroFactura}`);
+            const response = await axios.get(`https://backtdc.vercel.app/api/invoiceProd/modal/${nroFactura}`);
             setFacturasProd(response.data);
             setModalShow(true); // Abrir el modal después de obtener los productos
         } catch (error) {
@@ -106,7 +106,7 @@ export default function FacturaFecha() {
             y += 10;
     
             try {
-                const response = await axios.get(`http://localhost:4000/api/invoiceProd/modal/${invoice.nro}`);
+                const response = await axios.get(`https://backtdc.vercel.app/api/invoiceProd/modal/${invoice.nro}`);
                 response.data.forEach((prod: any) => {
                     if (y > pageHeight - 30) {
                         doc.addPage();

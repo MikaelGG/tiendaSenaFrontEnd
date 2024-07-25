@@ -13,14 +13,14 @@ export default function BalanceDiario() {
   const [egresosList, setEgresos] = useState(0);
 
   useEffect(() => {
-    axios.get("http://localhost:4000/api/dailyBalance").then((response) => {
+    axios.get("https://backtdc.vercel.app/api/dailyBalance").then((response) => {
       setDiario(response.data);
       console.log(response.data);
     });  
   }, []);
 
   useEffect(() => {
-    axios.get("http://localhost:4000/api/dailyBalance/in")
+    axios.get("https://backtdc.vercel.app/api/dailyBalance/in")
     .then((response) => {
       console.log("Respuesta de ingresos:", response.data);
       setIngresos(response.data[0].Ingresos);
@@ -30,7 +30,7 @@ export default function BalanceDiario() {
       console.error("Error al obtener los ingresos:", error);
     });
 
-  axios.get("http://localhost:4000/api/dailyBalance/eg")
+  axios.get("https://backtdc.vercel.app/api/dailyBalance/eg")
     .then((response) => {
       console.log("Respuesta de Egresos:", response.data);
       setEgresos(response.data[0].Egresos);

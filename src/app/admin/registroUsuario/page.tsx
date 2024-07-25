@@ -37,7 +37,7 @@ export default function RegistroUsuario(){
         }
           
         try {
-            await axios.post(`http://localhost:4000/api/user`,{
+            await axios.post(`https://backtdc.vercel.app/api/user`,{
                 cedula: cedula,    
                 nombre: nombre,
                 apellido: apellido,

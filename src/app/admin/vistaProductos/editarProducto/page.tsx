@@ -27,7 +27,7 @@ const EditarProducto = () => {
 
     useEffect(() => {
         if (codigo){
-            axios.get<Product[]>(`http://localhost:4000/api/products/${codigo}`).then((response) => {
+            axios.get<Product[]>(`https://backtdc.vercel.app/api/products/${codigo}`).then((response) => {
                 const product = response.data[0];
                 setProducto(product);
                 setSelectedType(product.tipo);
@@ -71,7 +71,7 @@ const EditarProducto = () => {
             return;
         }
 
-        axios.put(`http://localhost:4000/api/products/${codigo}`, producto).then(() => {
+        axios.put(`https://backtdc.vercel.app/api/products/${codigo}`, producto).then(() => {
             Swal.fire("Producto editado correctamente", "", "success").then(() => {
                 router.push("/admin/vistaProductos");
             })      

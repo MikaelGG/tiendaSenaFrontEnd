@@ -25,7 +25,7 @@ export default function RegistroUtensilios(){
             return;
         }
 
-        axios.post("http://localhost:4000/api/utensil",{    
+        axios.post("https://backtdc.vercel.app/api/utensil",{    
             nombre:nombre,
             cantidad:cantidad,
             imagen:imagen

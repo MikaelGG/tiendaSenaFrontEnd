@@ -18,7 +18,7 @@ export default function PageInicio() {
     const router = useRouter()
     const handleSubmit = async () => {
         try {
-            const response = await axios.post("http://localhost:4000/api/signIn", {
+            const response = await axios.post("https://backtdc.vercel.app/api/signIn", {
                 correo: user,
                 cedula: password
             });

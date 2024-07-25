@@ -8,7 +8,7 @@ export default function Provedores(){
     const [proveedoresList,setProveedores] = useState([])
 
     useEffect(() =>{
-        axios.get("http://localhost:4000/api/supplier",).then((response)=>{
+        axios.get("https://backtdc.vercel.app/api/supplier",).then((response)=>{
             setProveedores(response.data);
         });
     }, [])

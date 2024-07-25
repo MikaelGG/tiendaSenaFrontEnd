@@ -21,7 +21,7 @@ function EditUtensilios(){
 
     useEffect(() => {
         if (codigo){
-            axios.get(`http://localhost:4000/api/utensil/${codigo}`).then((response) => {
+            axios.get(`https://backtdc.vercel.app/api/utensil/${codigo}`).then((response) => {
                 const product = response.data[0]
                 setProducto(product);
                 console.log(producto)
@@ -41,7 +41,7 @@ function EditUtensilios(){
 
     const handleSubmit = async (event: any) => {
         event.preventDefault();
-        axios.put(`http://localhost:4000/api/utensil/${codigo}`, producto)
+        axios.put(`https://backtdc.vercel.app/api/utensil/${codigo}`, producto)
         .then(() => {
             Swal.fire("Utensilio editado correctamente", "", "success").then(() =>{
                 route.push("/admin/inventarioUtensilios");

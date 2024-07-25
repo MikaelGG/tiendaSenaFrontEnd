@@ -19,7 +19,7 @@ export default function VistaFactura(){
 
     
     useEffect(() =>{
-        axios.get("http://localhost:4000/api/invoice",).then((response)=>{
+        axios.get("https://backtdc.vercel.app/api/invoice",).then((response)=>{
             setFacturas(response.data);
         });
     }, [])
@@ -27,7 +27,7 @@ export default function VistaFactura(){
 
     const fetchFacturaProd = async (nroFactura: number) => {
         try {
-          const response = await axios.get(`http://localhost:4000/api/invoiceProd/modal/${nroFactura}`);
+          const response = await axios.get(`https://backtdc.vercel.app/api/invoiceProd/modal/${nroFactura}`);
           setFacturasProd(response.data);
           setModalShow(true); // Abrir el modal después de obtener los productos
         } catch (error) {
@@ -45,7 +45,7 @@ export default function VistaFactura(){
                 cancelButtonText: "Cancelar"
             }).then((result) => {
                 if (result.isConfirmed) {
-                    axios.delete(`http://localhost:4000/api/invoice/${nro}`).then(() => {
+                    axios.delete(`https://backtdc.vercel.app/api/invoice/${nro}`).then(() => {
                         Swal.fire("Factura eliminada", "", "success").then(() => {
                             location.reload();
                         })

@@ -11,7 +11,7 @@ import { formatNumber, formatNumberCOP } from '@/app/componentes/formatNumber';
 export default function Insumos() {
   const [insumosList, setInsumos] = useState([])
   useEffect(() => {
-    axios.get("http://localhost:4000/api/rawMaterial",).then((response) => {
+    axios.get("https://backtdc.vercel.app/api/rawMaterial",).then((response) => {
       setInsumos(response.data);
     });
   }, [])
@@ -28,7 +28,7 @@ export default function Insumos() {
     }).then((result) => {
         if (result.isConfirmed) {
             // Si el usuario confirma, realiza la llamada a la API para eliminar el elemento
-            axios.delete(`http://localhost:4000/api/rawMaterial/${codigo}`).then(() => {
+            axios.delete(`https://backtdc.vercel.app/api/rawMaterial/${codigo}`).then(() => {
                 // Mostrar un mensaje de éxito usando SweetAlert 2
                 Swal.fire("Insumo eliminado", "", "success").then(() => {
                   location.reload();
