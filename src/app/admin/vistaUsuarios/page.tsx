@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 export default function Usuarios(){
   const [usuariosList, setUsuarios] = useState([]);
   useEffect(() =>{
-    axios.get("https://backtdc.vercel.app/api/user",).then((response)=>{
+    axios.get("https://backendtdc.vercel.app/api/user",).then((response)=>{
         setUsuarios(response.data);
     });
   }, [])

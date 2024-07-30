@@ -15,7 +15,7 @@ const Eventos = () => {
   const [eventosList, setEventos] = useState([]);
 
   useEffect(() => {
-    axios.get("https://backtdc.vercel.app/api/event").then((response) => {
+    axios.get("https://backendtdc.vercel.app/api/event").then((response) => {
       setEventos(response.data);
     });
   }, []);

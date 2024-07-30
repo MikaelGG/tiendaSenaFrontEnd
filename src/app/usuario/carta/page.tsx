@@ -18,7 +18,7 @@ export default function Menu() {
   const [botonSeleccionado, setBotonSeleccionado] = useState('');
  
   useEffect(() => {
-    axios.get("https://backtdc.vercel.app/api/products").then((response) => {
+    axios.get("https://backendtdc.vercel.app/api/products").then((response) => {
       setCarta(response.data);
       setInitialState(response.data);
     });

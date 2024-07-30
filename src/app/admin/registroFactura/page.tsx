@@ -28,10 +28,10 @@ export default function PageFactura() {
     }, [filas]);
 
     useEffect(() => {
-        axios.get("https://backtdc.vercel.app/api/consumer").then((response) => {
+        axios.get("https://backendtdc.vercel.app/api/consumer").then((response) => {
             setConsumidoresList(response.data);
         });
-        axios.get("https://backtdc.vercel.app/api/products").then((response) => {
+        axios.get("https://backendtdc.vercel.app/api/products").then((response) => {
             setProductosList(response.data);
         });
     }, []);
@@ -62,7 +62,7 @@ export default function PageFactura() {
 
     const add = async () => {    
         // Luego, envía el subtotal general junto con los demás datos al backend
-        await axios.post("https://backtdc.vercel.app/api/invoice", {
+        await axios.post("https://backendtdc.vercel.app/api/invoice", {
             fecha: fecha,
             estado: estado, // Enviar el subtotal general
             total: total,
@@ -82,7 +82,7 @@ export default function PageFactura() {
     const addProduct = (id_fact: any) =>{
 
         filas.forEach(fila => {
-            axios.post("https://backtdc.vercel.app/api/invoiceProd",{
+            axios.post("https://backendtdc.vercel.app/api/invoiceProd",{
                 id_producto: fila.codigo,
                 id_factura: id_fact,
                 precio_u: fila.precio,

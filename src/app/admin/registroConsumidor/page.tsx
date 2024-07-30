@@ -26,7 +26,7 @@ export default function RegistroConsumidor(){
             Swal.fire("Completa correctamente el teléfono", "", "error")
             return;
         } 
-        axios.post("https://backtdc.vercel.app/api/consumer",{
+        axios.post("https://backendtdc.vercel.app/api/consumer",{
             cedula:cedula,    
             nombre:nombre,
             apellido:apellido,

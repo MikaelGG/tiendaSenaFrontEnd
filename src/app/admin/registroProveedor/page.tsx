@@ -29,7 +29,7 @@ export default function RegistroProveedor(){
             Swal.fire("Completa correctamente el teléfono", "", "error")
             return;
         } 
-        axios.post(`https://backtdc.vercel.app/api/supplier`,{
+        axios.post(`https://backendtdc.vercel.app/api/supplier`,{
             nit:nit,    
             nombre:nombre,
             apellido:apellido,

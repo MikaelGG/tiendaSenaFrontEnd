@@ -12,20 +12,20 @@ export default function BalanceMensual(){
     const [egresosList, setEgresos] = useState(0);
 
     useEffect(() => {
-      axios.get("https://backtdc.vercel.app/api/monthlyBalance").then((response) => {
+      axios.get("https://backendtdc.vercel.app/api/monthlyBalance").then((response) => {
         setMensual(response.data);
         console.log(response.data);
       });
     }, []);
 
     useEffect(() => {
-      axios.get("https://backtdc.vercel.app/api/monthlyBalance/in").then((response) => {
+      axios.get("https://backendtdc.vercel.app/api/monthlyBalance/in").then((response) => {
         setIngresos(response.data[0].Ingresos)
       })
     })
 
     useEffect(() => {
-      axios.get("https://backtdc.vercel.app/api/monthlyBalance/eg").then((response) => {
+      axios.get("https://backendtdc.vercel.app/api/monthlyBalance/eg").then((response) => {
         setEgresos(response.data[0].Egresos)
       })
     })

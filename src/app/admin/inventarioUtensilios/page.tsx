@@ -17,7 +17,7 @@ export default function Utensilios() {
   const [utensiliosList, setUtensilios] = useState<Utensilio[]>([]);
 
   useEffect(() => {
-    axios.get("https://backtdc.vercel.app/api/utensil",).then((response) => {
+    axios.get("https://backendtdc.vercel.app/api/utensil",).then((response) => {
       setUtensilios(response.data);
     });
   }, [])
@@ -36,7 +36,7 @@ export default function Utensilios() {
     }).then((result) => {
         if (result.isConfirmed) {
             // Si el usuario confirma, realiza la llamada a la API para eliminar el elemento
-            axios.delete(`https://backtdc.vercel.app/api/utensil/${codigo}`).then(() => {
+            axios.delete(`https://backendtdc.vercel.app/api/utensil/${codigo}`).then(() => {
                 // Mostrar un mensaje de éxito usando SweetAlert 2
                 Swal.fire("Utensilio eliminado", "", "success").then(() => {
                   location.reload();

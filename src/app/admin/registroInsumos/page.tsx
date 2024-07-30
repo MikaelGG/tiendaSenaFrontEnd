@@ -42,7 +42,7 @@ export default function RegistroInsumos(){
             return;
         }
 
-        axios.post(`https://backtdc.vercel.app/api/rawMaterial`,{    
+        axios.post(`https://backendtdc.vercel.app/api/rawMaterial`,{    
             nombre:nombre,
             cantidad:cantidad,
             imagen:imagen,

@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 export default function Consumidores(){
     const [consumidoresList,setConsumidores] = useState([])
     useEffect(() =>{
-        axios.get("https://backtdc.vercel.app/api/consumer",).then((response)=>{
+        axios.get("https://backendtdc.vercel.app/api/consumer",).then((response)=>{
             setConsumidores(response.data);
         });
     }, [])

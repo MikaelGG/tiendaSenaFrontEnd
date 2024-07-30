@@ -42,7 +42,7 @@ export default function RegEvento(){
         const horaInicioCompleta = `${hora_inicio} ${amPmInicio}`.toLowerCase();
         const horaFinCompleta = `${hora_fin} ${amPmFin}`.toLowerCase();
         
-        await axios.post(`https://backtdc.vercel.app/api/event`,{
+        await axios.post(`https://backendtdc.vercel.app/api/event`,{
             titulo:titulo,
             fecha:fecha,
             hora_inicio: horaInicioCompleta,

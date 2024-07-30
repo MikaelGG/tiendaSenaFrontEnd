@@ -30,7 +30,7 @@ export default function RegistroCarta(){
             Swal.fire("Completa correctamente el tipo de producto", "", "error")
             return;
         } 
-        axios.post("https://backtdc.vercel.app/api/products",{
+        axios.post("https://backendtdc.vercel.app/api/products",{
             imagen:imagen,    
             nombre:nombre,
             descripcion:descripcion,

@@ -11,7 +11,7 @@ export default function InicioA() {
   const [vencimientoList, setVencimiento] = useState([]);
 
     useEffect(() => {
-      axios.get("https://backtdc.vercel.app/api/expiration",).then((response) => {
+      axios.get("https://backendtdc.vercel.app/api/expiration",).then((response) => {
         setVencimiento(response.data);
         console.log(response.data)
       });
@@ -19,13 +19,13 @@ export default function InicioA() {
 
 
   useEffect(() => {
-    axios.get("https://backtdc.vercel.app/api/user").then((response) => {
+    axios.get("https://backendtdc.vercel.app/api/user").then((response) => {
       setCountUsers(response.data.length);
     });
   }, []);
 
   useEffect(() => {
-    axios.get("https://backtdc.vercel.app/api/invoice").then((response) => {
+    axios.get("https://backendtdc.vercel.app/api/invoice").then((response) => {
       setTotal(response.data);
       setCountFactura(response.data.length);
     });
