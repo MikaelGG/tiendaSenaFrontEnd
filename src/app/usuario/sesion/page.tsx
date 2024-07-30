@@ -18,7 +18,7 @@ export default function PageInicio() {
     const router = useRouter()
     const handleSubmit = async () => {
         try {
-            const response = await axios.post("https://backendtdc.vercel.app/api/signIn", {
+            const response = await axios.post(`https://backendtdc.vercel.app/api/signIn`, {
                 correo: user,
                 cedula: password
             });
