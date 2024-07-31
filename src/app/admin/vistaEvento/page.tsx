@@ -46,7 +46,7 @@ export default function Eventos(){
 
     function formatDate(dateString: any) {
         const date = new Date(dateString);
-        const formattedDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`; 
+        const formattedDate = new Intl.DateTimeFormat('en-US').format(date);
         return formattedDate;
     }
 
