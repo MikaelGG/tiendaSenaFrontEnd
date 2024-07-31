@@ -47,7 +47,7 @@ export default function Eventos(){
 
     function formatDate(dateString: any) {
         const date = new Date(dateString);
-        const formattedDate = moment(date).utc().format('YYYY/MM/DD')
+        const formattedDate = moment.utc(date.toLocaleString()).format('YYYY/MM/DD')
         return formattedDate;
     }
 
