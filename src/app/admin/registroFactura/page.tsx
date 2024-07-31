@@ -9,7 +9,6 @@ import Swal from "sweetalert2";
 export default function PageFactura() {
     const router = useRouter();
     const [fecha, setFecha] = useState('');
-    const [estado, setEstado] = useState('');
     const [total, setTotal] = useState(0);
     const [consumidor, setConsumidor] = useState(0);
     const [consumidoresList, setConsumidoresList] = useState([]);
@@ -64,7 +63,6 @@ export default function PageFactura() {
         // Luego, envía el subtotal general junto con los demás datos al backend
         await axios.post("https://backendtdc.vercel.app/api/invoice", {
             fecha: fecha,
-            estado: estado, // Enviar el subtotal general
             total: total,
             consumidor: consumidor
         }).then(res => {
@@ -115,11 +113,6 @@ export default function PageFactura() {
                     <label className="texto_menu col-4">Fecha de factura</label>
                     <input onChange={(event) => { setFecha(event.target.value); }} type="date" className="col-7 m-3 input_form"></input>
                     <label className="texto_menu col-4">Estado</label>
-                    <select onChange={(event) => { setEstado(event.target.value); }} className="col-7 m-3 input_form">
-                        <option>Selecciona el estado</option>
-                        <option value={1}>Activo</option>
-                        <option value={0}>Inactivo</option>
-                    </select>
                     <div className="row container my-3">
                         <div className="texto_menu text-center my-1 mx-3 row table">
                             <div className="col-3 my-1">Producto</div>
