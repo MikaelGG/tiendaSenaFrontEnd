@@ -5,7 +5,7 @@ import event from "@/app/admin/event.module.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import {format} from "date-fns";
+import moment from "moment";
 
 const backgroundStylesU: React.CSSProperties = {
     backgroundImage: `url('/userp.svg/')`, 
@@ -47,7 +47,7 @@ export default function Eventos(){
 
     function formatDate(dateString: any) {
         const date = new Date(dateString);
-        const formattedDate = format(date, "yyyy-MM-dd")
+        const formattedDate = moment(date).format('YYYY/MM/DD')
         return formattedDate;
     }
 
