@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import styles from "../admin.module.css";
 import axios from "axios";
 import {formatNumberCOP, formatNumber } from '@/app/componentes/formatNumber';
+import moment from 'moment';
 
 export default function InicioA() {
   const [countUsers, setCountUsers] = useState(0);
@@ -41,12 +42,10 @@ export default function InicioA() {
   console.log(totalFactura);
   console.log(total);
 
-  function formatDate(dateString: string) {
+  function formatDate(dateString: any) {
     const date = new Date(dateString);
-    const year = date.getFullYear();
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const day = (date.getDate() + 1).toString().padStart(2, '0');
-    return `${year}-${month}-${day}`;
+    const formattedDate = moment.utc(date, 'YYYY-MM-DD').format('YYYY-MM-DD')
+    return formattedDate;
   }
 
   return (

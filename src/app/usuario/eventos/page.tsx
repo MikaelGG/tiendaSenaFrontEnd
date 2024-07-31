@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "../usuario.module.css";
 import event from "@/app/admin/event.module.css";
+import moment from 'moment';
 
 const backgroundStylesU: React.CSSProperties = {
   backgroundImage: `url('/userp.svg/')`,
@@ -24,10 +25,8 @@ const Eventos = () => {
 
   function formatDate(dateString: any) {
     const date = new Date(dateString);
-    const year = date.getFullYear();
-    const month = (date.getMonth() + 1).toString().padStart(2, "0");
-    const day = date.getDate().toString().padStart(2, "0");
-    return `${year}-${month}-${day}`;
+    const formattedDate = moment.utc(date, 'YYYY-MM-DD').format('YYYY-MM-DD')
+    return formattedDate;
   }
 
   

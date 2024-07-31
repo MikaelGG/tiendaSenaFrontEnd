@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Swal from "sweetalert2";
 import { formatNumber, formatNumberCOP } from '@/app/componentes/formatNumber';
+import moment from 'moment';
 
 
 export default function Insumos() {
@@ -40,10 +41,8 @@ export default function Insumos() {
 
   function formatDate(dateString: any) {
     const date = new Date(dateString);
-    const year = date.getFullYear();
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const day = (date.getDate() + 1).toString().padStart(2, '0');
-    return `${year}-${month}-${day}`;
+    const formattedDate = moment.utc(date, 'YYYY-MM-DD').format('YYYY-MM-DD')
+    return formattedDate;
   }
 
   return (<>

@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { formatNumber, formatNumberCOP } from '@/app/componentes/formatNumber';
 import Swal from "sweetalert2";
+import moment from 'moment';
 
 export default function VistaFactura(){
 
@@ -59,10 +60,8 @@ export default function VistaFactura(){
         
     function formatDate(dateString: any) {
         const date = new Date(dateString);
-        const year = date.getFullYear();
-        const month = (date.getMonth() + 1).toString().padStart(2, '0');
-        const day = (date.getDate() + 1).toString().padStart(2, '0');
-        return `${year}-${month}-${day}`;
+        const formattedDate = moment.utc(date, 'YYYY-MM-DD').format('YYYY-MM-DD')
+        return formattedDate;
     }
 
     const manejarSubmit = (e: React.FormEvent) => {

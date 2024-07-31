@@ -10,6 +10,7 @@ import Swal from "sweetalert2";
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable'
 import { format } from 'date-fns';
+import moment from 'moment';
 
 export default function FacturaFecha() {
     const [facturaList, setFacturaList] = useState([]);
@@ -49,10 +50,8 @@ export default function FacturaFecha() {
 
     function formatDate(dateString: any) {
         const date = new Date(dateString);
-        const year = date.getFullYear();
-        const month = (date.getMonth() + 1).toString().padStart(2, '0');
-        const day = (date.getDate() + 1).toString().padStart(2, '0');
-        return `${year}-${month}-${day}`;
+        const formattedDate = moment.utc(date, 'YYYY-MM-DD').format('YYYY-MM-DD')
+        return formattedDate;
     }
 
     const generarPDF = async () => {

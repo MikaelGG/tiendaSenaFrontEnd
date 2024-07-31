@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 import { formatNumber, formatNumberCOP } from '@/app/componentes/formatNumber';
+import moment from 'moment';
 
 
 export default function BalanceDiario() {
@@ -43,10 +44,8 @@ export default function BalanceDiario() {
 
   function formatDate(dateString: any) {
     const date = new Date(dateString);
-    const year = date.getFullYear();
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const day = (date.getDate() + 1).toString().padStart(2, '0');
-    return `${year}-${month}-${day}`;
+    const formattedDate = moment.utc(date, 'YYYY-MM-DD').format('YYYY-MM-DD')
+    return formattedDate;
   }
 
 
