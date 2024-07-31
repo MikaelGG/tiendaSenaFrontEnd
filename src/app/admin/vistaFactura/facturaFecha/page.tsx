@@ -86,7 +86,7 @@ export default function FacturaFecha() {
             doc.setFontSize(12);
             doc.setTextColor(0, 0, 0);
             doc.text(`Consumidor(a): ${invoice.nombreConsumidor} ${invoice.apellidoConsumidor}`, 10, y);
-            doc.text(`Fecha: ${format(new Date(invoice.fecha), 'dd/MM/yyyy')}`, pageWidth - 10, y, {align: "right"});
+            doc.text(`Fecha: ${formatDate(new Date(invoice.fecha))}`, pageWidth - 10, y, {align: "right"});
             y += 5;
     
             // Table Headers
