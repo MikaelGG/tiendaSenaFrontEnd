@@ -112,7 +112,6 @@ export default function PageFactura() {
                     </select>
                     <label className="texto_menu col-4">Fecha de factura</label>
                     <input onChange={(event) => { setFecha(event.target.value); }} type="date" className="col-7 m-3 input_form"></input>
-                    <label className="texto_menu col-4">Estado</label>
                     <div className="row container my-3">
                         <div className="texto_menu text-center my-1 mx-3 row table">
                             <div className="col-3 my-1">Producto</div>
