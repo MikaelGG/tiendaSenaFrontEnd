@@ -46,7 +46,7 @@ export default function Eventos(){
 
     function formatDate(dateString: any) {
         const date = new Date(dateString);
-        const formatter = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' });
+        const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'short' });
         const formattedDate = formatter.format(date);
         return formattedDate;
     }
