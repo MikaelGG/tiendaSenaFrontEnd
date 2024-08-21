@@ -1,15 +1,14 @@
-'use client'
+"use client";
 
-import React, { useState, useEffect } from 'react';
-import Head from 'next/head';
-
+import React, { useState, useEffect } from "react";
+import Head from "next/head";
 
 const images = [
-  'https://i.imgur.com/YLTkIEZ.jpg',
-  'https://i.imgur.com/EjkKrv5.jpg',
-  'https://i.imgur.com/wkHN2Iu.jpg',
-  'https://i.imgur.com/f3qGHFb.jpg',
-  'https://i.imgur.com/ILRVTkN.jpg'
+  "https://i.imgur.com/YLTkIEZ.jpg",
+  "https://i.imgur.com/EjkKrv5.jpg",
+  "https://i.imgur.com/wkHN2Iu.jpg",
+  "https://i.imgur.com/f3qGHFb.jpg",
+  "https://i.imgur.com/ILRVTkN.jpg",
 ];
 
 const AutomaticGalleryPage = () => {
@@ -17,7 +16,7 @@ const AutomaticGalleryPage = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex(prevIndex => (prevIndex + 1) % images.length);
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, 3000);
 
     return () => clearInterval(interval);
@@ -36,7 +35,7 @@ const AutomaticGalleryPage = () => {
         {images.map((image, index) => (
           <div
             key={index}
-            className={`gallery-item ${currentIndex === index ? 'active' : ''}`}
+            className={`gallery-item ${currentIndex === index ? "active" : ""}`}
             onClick={() => handleClick(index)}
           >
             <img
@@ -60,13 +59,29 @@ const AutomaticGalleryPage = () => {
           transition: transform 0.3s ease-in-out;
         }
 
-       
-
         .gallery-image {
           width: 180px;
           height: 180px;
           object-fit: cover;
           border-radius: 8px;
+        }
+
+        @media (max-width: 768px) {
+          .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+          }
+          .gallery-item {
+            width: calc(30% - -6.5px);
+            margin-bottom: -7px;
+            margin-right: 62px;
+            margin-left: -5px;
+          }
+          .gallery-item:nth-child(5) {
+            width: 100%;
+            margin-left: 40px;
+          }
         }
       `}</style>
     </div>
@@ -74,5 +89,3 @@ const AutomaticGalleryPage = () => {
 };
 
 export default AutomaticGalleryPage;
-
-
