@@ -148,13 +148,13 @@
   left: 0px;
 }
 .nav_icon_8:not(.open):hover span:nth-child(1) {
-  transform: rotate(-3deg) scaleY(1.1);
+  transform: rotate(-1deg) scaleY(1.1);
 }
 .nav_icon_8:not(.open):hover span:nth-child(2) {
-  transform: rotate(3deg) scaleY(1.1);
+  transform: rotate(-1deg) scaleY(1.1);
 }
 .nav_icon_8:not(.open):hover span:nth-child(3) {
-  transform: rotate(-4deg) scaleY(1.1);
+  transform: rotate(-1deg) scaleY(1.1);
 }
 .nav_icon_8.open span:nth-child(1) {
   transform: rotate(45deg);
