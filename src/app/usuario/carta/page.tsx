@@ -26,10 +26,10 @@ export default function Menu() {
 
   const setInitialState = (data: any) => {
     const cafesProducts = data.filter(
-      (product: any) => product.tipo === "cafes"
+      (product: any) => product.tipo === "bebidas"
     );
     setFilteredProducts(cafesProducts);
-    setBotonSeleccionado("cafes");
+    setBotonSeleccionado("bebidas");
   };
 
   const filterProducts = (tipo: any) => {
@@ -51,25 +51,25 @@ export default function Menu() {
             className={`${
               styles.ingresar
             } col-2 text-center align-items-center p-1 mx-3 ${
-              botonSeleccionado === "cafes"
+              botonSeleccionado === "bebidas"
                 ? `${style.botonCafe} seleccionado`
                 : ""
             }  `}
-            onClick={() => filterProducts("cafes")}
+            onClick={() => filterProducts("bebidas")}
           >
-            Cafés
+            Bebidas
           </button>
           <button
             className={`${
               styles.ingresar
             } col-2 text-center align-items-center p-1 mx-3 ${
-              botonSeleccionado === "panaderia"
+              botonSeleccionado === "alimentos"
                 ? `${style.botonCafe} seleccionado`
                 : ""
             }  `}
-            onClick={() => filterProducts("panaderia")}
+            onClick={() => filterProducts("alimentos")}
           >
-            Panadería
+            Alimentos
           </button>
           <button
             className={`${
