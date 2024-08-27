@@ -76,19 +76,6 @@ export default function Provedores() {
                 </div>
                 <div className="col-3 mb-3">{(val as any).direccion}</div>
                 <div className="col-2 mb-3">{(val as any).telefono}</div>
-                {/* <Link
-                  href={`/admin/registroProveedor/editarProveedor?nit=${
-                    (val as any).nit
-                  }`}
-                  className={`${styles.text_form}`}
-                >
-                  <button
-                    className={`${style.edit} col-1 mx-1 mb-3 text-center align-items-center p-1 `}
-                    type="submit"
-                  >
-                    Editar
-                  </button>
-                </Link> */}
                 <button
                   onClick={() => eliminar((val as any).nit)}
                   className={`${style.edit} col-1 mx-1 mb-3 text-center align-items-center p-1 `}
